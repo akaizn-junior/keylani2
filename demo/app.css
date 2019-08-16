@@ -1,0 +1,64 @@
+::selection {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+* {
+	margin: 0;
+	padding: 4px;
+	font-weight: 300;
+	--prime-color: beige;
+	--snd-color: #f1eae1;
+}
+
+h1 {
+	font-weight: 400;
+	font-size: 50px;
+}
+
+body {
+	display: grid;
+	grid-template-rows: 100px 1fr 100px;
+	background-color: var(--prime-color);
+	font-family: sans-serif;
+	color: #444444;
+}
+
+main {
+	border-top: 1px solid var(--snd-color);
+	border-bottom: 1px solid var(--snd-color);
+	min-height: 100px;
+}
+
+footer {
+	font-size: 13px;
+}
+
+.box {
+	max-width: 1200px;
+	width: 500px;
+	margin: auto;
+	color: #000000;
+	padding: 10px 2px;
+	border: 1px solid #ffffff;
+}
+
+.box ~ .box {
+	border-top: none;
+}
+
+.keybind {
+	font-weight: 400;
+	cursor: pointer;
+	font-size: 13px;
+	background-color: yellow;
+	border: 1px solid #f7f701;
+}
+
+.combos > .keybind::before {
+	content: '(';
+}
+
+.combos > .keybind::after {
+	content: ')';
+}

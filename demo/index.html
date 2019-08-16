@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="author" content="Simao Nziaka">
+	<meta name="description" content="A js key binding library">
+	<link rel="stylesheet" href="app.css">
+	<title>K e y l a n i</title>
+	<style>
+		.key-class {
+			position: relative;
+			color: blue;
+			font-size: 13px;
+			background-color: antiquewhite;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+
+		.keylani-loud {
+			border: 1px solid #000000;
+			background-color: #000000;
+			color: white;
+			font-weight: 500;
+			font-size: 50px;
+			padding: 0px;
+			border-radius: 2px;
+		}
+
+		.keylani-loud-data {
+			font-size: 10px;
+			color: yellow;
+			border-top: 1px solid #424242;
+			background-color: rgb(80, 76, 76);
+			padding: 5px;
+			text-align: right;
+		}
+
+		.keylani-loud-data:nth-child(3)::before {
+			content: 'pressed ';
+		}
+
+		.keylani-loud-data:nth-child(3)::after {
+			content: 'x';
+		}
+
+		.keylani-loud-data:nth-child(4)::before {
+			content: 'Char code: ';
+		}
+
+		.keylani-loud-data:nth-child(5)::before {
+			content: 'Key code: ';
+		}
+	</style>
+</head>
+<body>
+    <header>
+		<h1>Keylani <i>Demo</i></h1>
+    </header>
+    <main>
+		<div class="box single">
+			<span class="keybind" data-keybind="i+u:callA" data-keylabel="Combo 'i+u' bound from the DOM">i + u</span>
+			<span class="keybind" data-keybind="A:callA" data-keylabel="Letter 'A' bound from the DOM">A</span>
+			<span class="keybind" data-keybind="t:callA" data-keylabel="Letter 't' bound from the DOM">t</span>
+			<span class="keybind" data-keybind="B:callA" data-keylabel="Letter 'B' bound from the DOM">B</span>
+			<span class="keybind" data-keybind="c+w:callA" data-keylabel="Combo 'c+w' bound from the DOM">c + w</span>
+			<span class="keybind" data-keybind="M:callA" data-keylabel="Letter 'M' bound from the DOM">M</span>
+			<span class="keybind" data-keybind="3:callA" data-keylabel="Digit '3' bound from the DOM">3</span>
+			<span class="keybind" data-keybind="D:callA" data-keylabel="Letter 'D' bound from the DOM">D</span>
+			<span class="keybind" data-keybind="9:callA" data-keylabel="Digit '9' bound from the DOM">9</span>
+			<span class="keybind" data-keybind="g+o+o+g+l+e:callA" data-keylabel="Word 'google' bound from the DOM">google</span>
+			<span class="keybind" data-keybind="h:callA" data-keylabel="Letter 'h' bound from the DOM">h</span>
+		</div>
+		<div class="box combos">
+			<span class="keybind" data-keybind="x+y:callA" data-keylabel="Combo 'x+y' bound from the DOM">x + y</span>
+			<span class="keybind" data-keybind="Control+p:callA" data-keylabel="Combo 'Ctrl+p' bound from the DOM">Ctrl + p</span>
+		</div>
+		<div class="box">
+			<textarea rows="5" cols="60" data-gramm="false"></textarea>
+		</div>
+		<div class="box">
+			<input type="text" />
+		</div>
+    </main>
+    <footer>
+		<span>&copy; 2019 Simao<i>Nziaka</i></span>
+    </footer>
+	<script src="../src/keylani.dev.js"></script>
+	<script>
+
+		Keylani.bind('1+2', callA, 'Combo "1+2" bound from Keylani.bind', true);
+		Keylani.bind('z', callA, 'Leter "z" bound from Keylani.bind', true);
+		Keylani.bind('f', callA, 'Letter "f" bound from Keylani.bind', true);
+		Keylani.bind('G', callA, 'Letter "G" bound from Keylani.bind', true);
+
+		Keylani.map({
+			'h+e+l+l+o': {
+				bind: callA,
+				label: 'Combo "h+e+l+l+o" bound from Keylani.map',
+				when: true
+			},
+			'r+3': {
+				bind: callA,
+				label: 'Combo "r+3" bound from Keylani.map',
+				when: true
+			},
+			'Tab': {
+				bind: callA,
+				label: 'Cmd "Tab" bound from Keylani.map',
+				when: true
+			},
+			'CapsLock': {
+				bind: callA,
+				label: 'Cmd "CapsLOck" bound from Keylani.map. (CapsLock is On!)',
+				when: true
+			}
+		});
+
+		Keylani.listen({
+			style: 'key-class',
+			loud: true,
+			keyshow: true,
+			showLoudData: true
+		});
+
+		function callA(done) {
+			console.log('Key "'+done.key +'", pressed '+ done.pressed+'x', done);
+		}
+
+	</script>
+</body>
+</html>
