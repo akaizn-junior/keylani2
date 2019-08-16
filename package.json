@@ -4,7 +4,7 @@
   "description": "A js key binding library",
   "scripts": {
     "postinstall": "cypress verify",
-    "test": "nyc --reporter=text-summary mocha --recursive ./src/spec/**/*.test.js"
+    "test": "nyc --reporter=html --reporter=text-summary mocha --recursive ./src/spec/**/*.test.js"
   },
   "author": "Simao Nziaka",
   "license": "ISC",

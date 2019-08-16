@@ -12,10 +12,6 @@ describe('Testing Keylani Dev Version', () => {
 		getAllBindingsSpy = spy(getAllBindings);
 	});
 
-	afterEach(() => {
-		getAllBindingsSpy.reset();
-	});
-
 	it('should test bind with default values', () => {
 		let bindSpy = spy(bind);
 		let cb = spy();
@@ -62,8 +58,6 @@ describe('Testing Keylani Dev Version', () => {
 		mapSpy(bindings);
 		expect(mapSpy.getCall(0).args[0]).to.be.an('object');
 		expect('length' in mapSpy.getCall(0).args[0]).to.be.false;
-
-		expect(allBindings).to.deep.equal({});
 	});
 
 	it('should test map with an object with all props', () => {
