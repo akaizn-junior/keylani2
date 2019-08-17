@@ -7,7 +7,30 @@ const {bind, map, getAllBindings, listen} = require('../keylani.interface');
 const Globals = require('../keylani.globals');
 const KeylaniDOMinterface = require('../keylani.dom');
 
-describe('Testing Keylani', () => {
+function fakeKeyBoardPress(key = "a", keyState = "keydown") {
+	let keyboardEvent = document.createEvent("KeyboardEvent");
+	let initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? "initKeyboardEvent" : "initKeyEvent";
+	let keys = {
+		"a": { keyCode: 65, charCode: 97 }
+	};
+
+	keyboardEvent[initMethod](
+		keyState, // event type: keydown, keyup, keypress
+		true,      // bubbles
+		true,      // cancelable
+		window,    // view: should be window
+		false,     // ctrlKey
+		false,     // altKey
+		false,     // shiftKey
+		false,     // metaKey
+		keys[key].keyCode,	// keyCode: unsigned long - the virtual key code, else 0
+		keys[key].charCode 	// charCode: unsigned long - the Unicode character associated with the depressed key, else 0
+	);
+
+	return document.dispatchEvent(keyboardEvent);
+}
+
+describe('Testing Keylani Interface', () => {
 
 	let getAllBindingsSpy;
 	let globalCb = spy();
@@ -234,7 +257,9 @@ describe('Testing Keylani', () => {
 		opts = {
 			style: '',
 			keyshow: true,
-			loud: true
+			loud: true,
+			loudTimer: 5500,
+			showLoudData: true
 		};
 
 		listenSpy(opts);
@@ -243,6 +268,34 @@ describe('Testing Keylani', () => {
 		expect(JSON.parse.calledOnce).to.be.true;
 		expect(KeylaniDOMinterface.__addLoudPanel.calledOnce).to.be.true;
 		expect(KeylaniDOMinterface.__listenDOM.calledOnce).to.be.true;
+	});
+
+	it('should verify the DOM for a few details (keylani paint class)', () => {
+		// let listenSpy = spy(listen);
+		// opts = {
+		// 	style: '',
+		// 	keyshow: true,
+		// 	loud: true,
+		// 	loudTimer: 5500,
+		// 	showLoudData: true
+		// };
+
+		// listenSpy(opts);
+
+		// fakeKeyBoardPress();
+
+		// // docuemnt.event.preventDefault();
+		// window.onkeydown = (e) => {
+		// 	e.stopPropagation();
+		// 	console.log(e);
+		// };
+		// // globalThis.event.stopPropagation();
+
+		// let loudElem = document.getElementsByClassName(Globals.__KEYLANI_SETTINGS__.loudClass);
+
+		// console.log(loudElem)
+
+		// expect(loudElem).to.not.be.undefined;
 	});
 
 	it('should clean up the fake DOM', () => {
