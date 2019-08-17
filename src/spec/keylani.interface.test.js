@@ -1,4 +1,4 @@
-const {describe} = require('mocha');
+const {describe, it, beforeEach} = require('mocha');
 const {expect} = require('chai');
 const {spy} = require('sinon');
 const fakeDOM = require('jsdom-global');
@@ -8,7 +8,6 @@ const Globals = require('../keylani.globals');
 const KeylaniDOMinterface = require('../keylani.dom');
 
 describe('Testing Keylani Interface', () => {
-
 	let getAllBindingsSpy;
 	let globalCb = spy();
 	let destroyFakeDOM;
@@ -32,10 +31,10 @@ describe('Testing Keylani Interface', () => {
 		let expected = {
 			[key]: {
 				key,
-				"binding": cb,
-				"label": "",
-				"pressed": 0,
-				"when": true
+				binding: cb,
+				label: '',
+				pressed: 0,
+				when: true
 			}
 		};
 
@@ -60,10 +59,10 @@ describe('Testing Keylani Interface', () => {
 		let expected = {
 			[key]: {
 				key,
-				"binding": cb,
+				binding: cb,
 				label,
-				"pressed": 0,
-				"when": true
+				pressed: 0,
+				when: true
 			}
 		};
 
@@ -116,7 +115,7 @@ describe('Testing Keylani Interface', () => {
 		let mapSpy = spy(map);
 		let keybindings = getAllBindingsSpy();
 		let bindings = {
-			'a': {
+			a: {
 				key: 'a',
 				when: true,
 				bind: spy()
@@ -209,7 +208,7 @@ describe('Testing Keylani Interface', () => {
 
 	it('should test listen with missing options (style)', () => {
 		let listenSpy = spy(listen);
-		opts = {
+		let opts = {
 			keyshow: true,
 			loud: true
 		};
@@ -220,7 +219,7 @@ describe('Testing Keylani Interface', () => {
 
 	it('should test listen with missing options (keyshow)', () => {
 		let listenSpy = spy(listen);
-		opts = {
+		let opts = {
 			style: '',
 			loud: true
 		};
@@ -236,7 +235,7 @@ describe('Testing Keylani Interface', () => {
 		spy(KeylaniDOMinterface, '__listenDOM');
 
 		let listenSpy = spy(listen);
-		opts = {
+		let opts = {
 			style: '',
 			keyshow: true,
 			loud: true,

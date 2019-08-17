@@ -4,17 +4,17 @@
  * ISC Licensed
  */
 
-const Helpers = require('./keylani.helpers');
-const DOM = require('./keylani.dom');
 const Globals = require('./keylani.globals');
+const {__isValidateOpts, __readKeys, __addToBindings} = require('./keylani.helpers');
+const DOMinterface = require('./keylani.dom');
 
 // interface *********************************************************
 
 function listen(opts) {
-	if(!Globals.__KEYLANI_SETTINGS__.hasRun && Helpers.__isValidateOpts(opts)) {
+	if(!Globals.__KEYLANI_SETTINGS__.hasRun && __isValidateOpts(opts)) {
 		let parsedOpts = JSON.parse(JSON.stringify(opts));
-		DOM.__addLoudPanel(parsedOpts);
-		DOM.__listenDOM(parsedOpts);
+		DOMinterface.__addLoudPanel(parsedOpts);
+		DOMinterface.__listenDOM(parsedOpts);
 		const state = {
 			matchCount: 0,
 			combo: '',
@@ -22,7 +22,7 @@ function listen(opts) {
 			keycodes: ''
 		};
 
-		window.addEventListener('keydown', Helpers.__readKeys(parsedOpts, state));
+		window.addEventListener('keydown', __readKeys(parsedOpts, state));
 		// run only once
 		Globals.__KEYLANI_SETTINGS__.hasRun = true;
 	}
@@ -30,7 +30,7 @@ function listen(opts) {
 
 function bind(key, binding, label = '', when = true) {
 	if(typeof key === 'string' && typeof binding === 'function' && typeof label === 'string' && typeof when === 'boolean') {
-		Helpers.__addToBindings(key, binding, label, when);
+		__addToBindings(key, binding, label, when);
 		return 1;
 	}
 	return 0;
@@ -53,6 +53,4 @@ function getAllBindings() {
 
 // export *********************************************************
 
-const Keylani = { bind, map, listen, getAllBindings };
-
-module.exports = Keylani;
+module.exports = { bind, map, listen, getAllBindings };

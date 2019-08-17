@@ -1,4 +1,5 @@
 const Globals = require('./keylani.globals');
+const {__addToBindings} = require('./keylani.helpers');
 
 // DOM ************************************************************
 
@@ -9,7 +10,7 @@ function __listenDOM(opts) {
 		let domBind = __readDomBinding(elem.dataset.keybind);
 		__paintHtml(opts, elem);
 		if(domBind.length) {
-			bind(
+			__addToBindings(
 				domBind[0],
 				window[domBind[1]] || null,
 				elem.dataset.keylabel || '',
@@ -37,7 +38,7 @@ function __paintHtml(opts, boundEl) {
 			keyTag.innerHTML = domBind[0];
 
 			if(typeof opts.style === 'string') {
-				keyTag.className += ' '+opts.style;
+				keyTag.className += ` ${opts.style}`;
 			} else {
 				for(let rule in opts.style) {
 					keyTag.style[rule] = opts.style[rule];
@@ -51,12 +52,12 @@ function __paintHtml(opts, boundEl) {
 
 function __canShowTag(keyshow, elem) {
 	return (
-		elem &&
-		elem.dataset &&
-		elem.dataset.keybind &&
-		keyshow &&
-		elem.dataset.keyshow === undefined ||
-		elem.dataset.keyshow === 'true'
+		elem
+		&& elem.dataset
+		&& elem.dataset.keybind
+		&& keyshow
+		&& elem.dataset.keyshow === undefined
+		|| elem.dataset.keyshow === 'true'
 	);
 }
 
@@ -94,7 +95,7 @@ function __addLoudPanel(opts) {
 			}
 		`;
 
-		if (loudStyleEl.styleSheet) {
+		if(loudStyleEl.styleSheet) {
 			// This is required for IE8 and below.
 			loudStyleEl.styleSheet.cssText = css;
 		} else {
@@ -127,8 +128,5 @@ function __addLoudPanel(opts) {
 
 module.exports = {
 	__addLoudPanel,
-	 __listenDOM,
-	 __canShowTag,
-	 __paintHtml,
-	 __readDomBinding
+	__listenDOM
 };

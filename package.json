@@ -5,18 +5,25 @@
   "scripts": {
     "postinstall": "cypress verify",
     "test:setup": "nyc --reporter=html --reporter=text-summary mocha --recursive ./src/spec/**/*.test.js",
-    "test": "nodemon --exec 'npm run test:setup'"
+    "test": "nodemon --exec 'npm run test:setup'",
+    "lint": "eslint .",
+    "compile": "export NODE_ENV=production && npm run lint && npm run test:setup && webpack --progress"
   },
   "author": "Simao Nziaka",
   "license": "ISC",
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "chai": "^4.2.0",
     "cypress": "^3.4.1",
+    "dotenv": "^8.0.0",
+    "eslint": "^6.1.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1",
-    "sinon": "^7.4.1"
+    "sinon": "^7.4.1",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
   }
 }

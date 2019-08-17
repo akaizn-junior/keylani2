@@ -29,13 +29,13 @@ function __readKeys(opts, state) {
 			__resetState(state);
 		} if(Globals.__KEYLANI_BINDINGS__[state.combo] && Globals.__KEYLANI_BINDINGS__[state.combo].when) {
 			__dontEvent(event);
-			let pressed = ++Globals.__KEYLANI_BINDINGS__[state.combo].pressed;
-			__keyMatchDone(state.combo, Globals.__KEYLANI_BINDINGS__[state.combo], opts, {...eventProps, pressed});
+			let pressedCount = ++Globals.__KEYLANI_BINDINGS__[state.combo].pressed;
+			__keyMatchDone(state.combo, Globals.__KEYLANI_BINDINGS__[state.combo], opts, {...eventProps, pressedCount});
 			__resetState(state);
 		} else if(state.matchCount >= Globals.__KEYLANI_SETTINGS__.maxKeyLength) {
 			__resetState(state);
 		}
-	}
+	};
 }
 
 function __dontEvent(ev) {
@@ -79,9 +79,9 @@ function __loudText(data, timer = Globals.__KEYLANI_SETTINGS__.defaultLoudTimer)
 
 function __updateStateByCombo(state, event, pressed) {
 	if(state.combo.length) {
-		state.combo += '+'+pressed;
-		state.code += '+'+event.code;
-		state.keyCode += '+'+event.keyCode;
+		state.combo += `+${pressed}`;
+		state.code += `+${event.code}`;
+		state.keyCode += `+${event.keyCode}`;
 	} else {
 		state.combo = pressed;
 		state.code = event.code;
@@ -91,18 +91,18 @@ function __updateStateByCombo(state, event, pressed) {
 
 function __isSpecialCase(key, list) {
 	return (
-		key === 'CapsLock' && !list[key] ||
-		key === 'Enter' && !list[key] ||
-		key === 'Shift' && !list[key]
+		key === 'CapsLock' && !list[key]
+		|| key === 'Enter' && !list[key]
+		|| key === 'Shift' && !list[key]
 	);
 }
 
 function __isValidateOpts(opts) {
 	let requiredSettings = (
-		(typeof opts === 'object' && !('length' in opts)) &&
-		'loud' in opts &&
-		'style' in opts &&
-		'keyshow' in opts
+		(typeof opts === 'object' && !('length' in opts))
+		&& 'loud' in opts
+		&& 'style' in opts
+		&& 'keyshow' in opts
 	);
 
 	// optional settings
@@ -110,10 +110,10 @@ function __isValidateOpts(opts) {
 	// showLoudData - toggles showing extra data for the key press
 
 	return (
-		requiredSettings &&
-		(typeof opts.style === 'string' || typeof opts.style === 'object' && !('length' in opts.style)) &&
-		typeof opts.loud === 'boolean' &&
-		typeof opts.keyshow === 'boolean'
+		requiredSettings
+		&& (typeof opts.style === 'string' || typeof opts.style === 'object' && !('length' in opts.style))
+		&& typeof opts.loud === 'boolean'
+		&& typeof opts.keyshow === 'boolean'
 	);
 }
 
@@ -138,9 +138,5 @@ function __addToBindings(key, binding, label, when) {
 module.exports = {
 	__readKeys,
 	__addToBindings,
-	__dontEvent,
-	__isSpecialCase,
-	__isValidateOpts,
-	__keyMatchDone,
-	__loudText
+	__isValidateOpts
 };
