@@ -24,13 +24,13 @@ function __readKeys(opts, state) {
 		}, Globals.__KEYLANI_SETTINGS__.stateTimeout);
 
 		if(state.matchCount === 1 && isExistingBind && isExistingBind.when) {
-			__dontEvent(event);
+			__cancelEvent(event);
 			__keyMatchDone(pressed, isExistingBind, opts, {...eventProps, pressed: ++isExistingBind.pressed});
 			__resetState(state);
 		} if(Globals.__KEYLANI_BINDINGS__[state.combo] && Globals.__KEYLANI_BINDINGS__[state.combo].when) {
-			__dontEvent(event);
+			__cancelEvent(event);
 			let pressedCount = ++Globals.__KEYLANI_BINDINGS__[state.combo].pressed;
-			__keyMatchDone(state.combo, Globals.__KEYLANI_BINDINGS__[state.combo], opts, {...eventProps, presed: pressedCount});
+			__keyMatchDone(state.combo, Globals.__KEYLANI_BINDINGS__[state.combo], opts, {...eventProps, pressed: pressedCount});
 			__resetState(state);
 		} else if(state.matchCount >= Globals.__KEYLANI_SETTINGS__.maxKeyLength) {
 			__resetState(state);
@@ -38,7 +38,7 @@ function __readKeys(opts, state) {
 	};
 }
 
-function __dontEvent(ev) {
+function __cancelEvent(ev) {
 	ev.preventDefault();
 	ev.stopPropagation();
 }
