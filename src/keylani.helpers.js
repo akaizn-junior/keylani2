@@ -30,7 +30,7 @@ function __readKeys(opts, state) {
 		} if(Globals.__KEYLANI_BINDINGS__[state.combo] && Globals.__KEYLANI_BINDINGS__[state.combo].when) {
 			__dontEvent(event);
 			let pressedCount = ++Globals.__KEYLANI_BINDINGS__[state.combo].pressed;
-			__keyMatchDone(state.combo, Globals.__KEYLANI_BINDINGS__[state.combo], opts, {...eventProps, pressedCount});
+			__keyMatchDone(state.combo, Globals.__KEYLANI_BINDINGS__[state.combo], opts, {...eventProps, presed: pressedCount});
 			__resetState(state);
 		} else if(state.matchCount >= Globals.__KEYLANI_SETTINGS__.maxKeyLength) {
 			__resetState(state);
