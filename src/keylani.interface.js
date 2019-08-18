@@ -1,4 +1,4 @@
-/*!
+/**
  * Keylani
  * (c) 2019 Verdexdesign - An open source Org by Simao Nziaka <sdnziaka@gmail.com>
  * ISC Licensed
@@ -37,7 +37,7 @@ function bind(key, binding, label = '', when = true) {
 }
 
 function map(bindings) {
-	if(typeof bindings === 'object' && !('length' in bindings)) {
+	if(Object.prototype.toString.call(bindings).includes('Object')) {
 		let nBindings = JSON.parse(JSON.stringify(bindings));
 		for(let binding in nBindings) {
 			if('bind' in bindings[binding] && 'label' in bindings[binding] && 'when' in bindings[binding]) {
@@ -51,6 +51,7 @@ function getAllBindings() {
 	return Globals.__KEYLANI_BINDINGS__;
 }
 
+
 // export *********************************************************
 
-module.exports = { bind, map, listen, getAllBindings };
+module.exports = { listen, bind, map, getAllBindings };

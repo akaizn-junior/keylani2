@@ -1,5 +1,6 @@
 const Globals = require('./keylani.globals');
 const {__addToBindings} = require('./keylani.helpers');
+const {__loudPanel} = require('./keylani.loud');
 
 // DOM ************************************************************
 
@@ -18,6 +19,10 @@ function __listenDOM(opts) {
 			);
 		}
 	}
+}
+
+function __addLoudPanel(opts) {
+	__loudPanel(opts);
 }
 
 function __readDomBinding(keybinding) {
@@ -61,72 +66,4 @@ function __canShowTag(keyshow, elem) {
 	);
 }
 
-function __addLoudPanel(opts) {
-	if(opts.loud) {
-		let headEl = document.head;
-		let bodyEl = document.body;
-		let loudStyleEl = document.createElement('style');
-
-		let loudEl = document.createElement('div');
-		let loudElChar = document.createElement('span');
-
-		loudStyleEl.type = 'text/css';
-		loudEl.className = Globals.__KEYLANI_SETTINGS__.loudClass;
-		loudEl.style = 'display: none;';
-
-		loudElChar.className = Globals.__KEYLANI_SETTINGS__.loudCharClass;
-
-		let css = `
-			.keylani-loud {
-				max-width: 200%;
-				margin: auto;
-				text-align: center;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				transition: all 1s;
-				z-index: 999999999;
-			}
-
-			.keylani-loud-data {
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-			}
-		`;
-
-		if(loudStyleEl.styleSheet) {
-			// This is required for IE8 and below.
-			loudStyleEl.styleSheet.cssText = css;
-		} else {
-			loudStyleEl.appendChild(document.createTextNode(css));
-		}
-
-		headEl.appendChild(loudStyleEl);
-		loudEl.appendChild(loudElChar);
-
-		if(opts.showLoudData) {
-			let loudElCode = document.createElement('p');
-			let loudElPressed = document.createElement('p');
-			let loudElKeyCode = document.createElement('p');
-			let loudElLabel = document.createElement('p');
-
-			loudElCode.className = Globals.__KEYLANI_SETTINGS__.loudDataClass;
-			loudElPressed.className = Globals.__KEYLANI_SETTINGS__.loudDataClass;
-			loudElKeyCode.className = Globals.__KEYLANI_SETTINGS__.loudDataClass;
-			loudElLabel.className = Globals.__KEYLANI_SETTINGS__.loudDataClass;
-
-			loudEl.appendChild(loudElLabel);
-			loudEl.appendChild(loudElPressed);
-			loudEl.appendChild(loudElCode);
-			loudEl.appendChild(loudElKeyCode);
-		}
-
-		bodyEl.appendChild(loudEl);
-	}
-}
-
-module.exports = {
-	__addLoudPanel,
-	__listenDOM
-};
+module.exports = { __listenDOM, __addLoudPanel };

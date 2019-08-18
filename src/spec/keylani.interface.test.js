@@ -5,7 +5,7 @@ const fakeDOM = require('jsdom-global');
 // lib
 const {bind, map, getAllBindings, listen} = require('../keylani.interface');
 const Globals = require('../keylani.globals');
-const KeylaniDOMinterface = require('../keylani.dom');
+const DOMinterface = require('../keylani.dom');
 
 describe('Testing Keylani Interface', () => {
 	let getAllBindingsSpy;
@@ -231,8 +231,8 @@ describe('Testing Keylani Interface', () => {
 	it('should test listen with all options', () => {
 		spy(window, 'addEventListener');
 		spy(JSON, 'parse');
-		spy(KeylaniDOMinterface, '__addLoudPanel');
-		spy(KeylaniDOMinterface, '__listenDOM');
+		spy(DOMinterface, '__addLoudPanel');
+		spy(DOMinterface, '__listenDOM');
 
 		let listenSpy = spy(listen);
 		let opts = {
@@ -247,8 +247,8 @@ describe('Testing Keylani Interface', () => {
 		expect(Globals.__KEYLANI_SETTINGS__.hasRun).to.be.true;
 		expect(window.addEventListener.calledOnce).to.be.true;
 		expect(JSON.parse.calledOnce).to.be.true;
-		expect(KeylaniDOMinterface.__addLoudPanel.calledOnce).to.be.true;
-		expect(KeylaniDOMinterface.__listenDOM.calledOnce).to.be.true;
+		expect(DOMinterface.__addLoudPanel.calledOnce).to.be.true;
+		expect(DOMinterface.__listenDOM.calledOnce).to.be.true;
 
 		JSON.parse.restore();
 	});

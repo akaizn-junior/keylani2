@@ -22,5 +22,18 @@ module.exports = {
 		path: path.join(__dirname, settings.outdir)
 	},
 	plugins: [],
-	module: {}
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader?cacheDirectory=true',
+					options: {
+						presets: ['@babel/preset-env']
+					}
+				}
+			}
+		]
+	}
 };

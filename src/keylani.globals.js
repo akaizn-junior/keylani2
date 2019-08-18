@@ -14,7 +14,4 @@ const __KEYLANI_SETTINGS__ = {
 	maxKeyLength: 0
 };
 
-module.exports = {
-	__KEYLANI_BINDINGS__,
-	__KEYLANI_SETTINGS__
-};
+module.exports = { __KEYLANI_BINDINGS__, __KEYLANI_SETTINGS__ };
