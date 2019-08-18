@@ -1,7 +1,5 @@
 const Globals = require('./keylani.globals');
 
-// loud ************************************************************
-
 function __loudPanel(opts) {
 	if(opts.loud) {
 		let headEl = document.head;

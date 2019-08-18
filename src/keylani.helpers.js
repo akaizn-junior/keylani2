@@ -1,8 +1,6 @@
 const Globals = require('./keylani.globals');
 const {__loudText} = require('./keylani.loud');
 
-// helpers *********************************************************
-
 function __readKeys(opts, state) {
 	return function(event) {
 		let pressed = event.key;

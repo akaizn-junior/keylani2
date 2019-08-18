@@ -8,8 +8,6 @@ const Globals = require('./keylani.globals');
 const {__isValidateOpts, __readKeys, __addToBindings} = require('./keylani.helpers');
 const DOMinterface = require('./keylani.dom');
 
-// interface *********************************************************
-
 function listen(opts) {
 	if(!Globals.__KEYLANI_SETTINGS__.hasRun && __isValidateOpts(opts)) {
 		let parsedOpts = JSON.parse(JSON.stringify(opts));
@@ -50,8 +48,5 @@ function map(bindings) {
 function getAllBindings() {
 	return Globals.__KEYLANI_BINDINGS__;
 }
-
-
-// export *********************************************************
 
 module.exports = { listen, bind, map, getAllBindings };

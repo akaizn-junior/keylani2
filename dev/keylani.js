@@ -109,8 +109,7 @@ var _require = __webpack_require__(/*! ./keylani.helpers */ "./src/keylani.helpe
     __addToBindings = _require.__addToBindings;
 
 var _require2 = __webpack_require__(/*! ./keylani.loud */ "./src/keylani.loud.js"),
-    __loudPanel = _require2.__loudPanel; // DOM ************************************************************
-
+    __loudPanel = _require2.__loudPanel;
 
 function __listenDOM(opts) {
   var dataKeyBindings = document.querySelectorAll(Globals.__KEYLANI_SETTINGS__.keybindingAttr);
@@ -179,14 +178,9 @@ module.exports = {
 /*!********************************!*\
   !*** ./src/keylani.globals.js ***!
   \********************************/
-/*! exports provided: __KEYLANI_BINDINGS__, __KEYLANI_SETTINGS__ */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__KEYLANI_BINDINGS__", function() { return __KEYLANI_BINDINGS__; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__KEYLANI_SETTINGS__", function() { return __KEYLANI_SETTINGS__; });
-// globals **********************************************************
 var __KEYLANI_BINDINGS__ = {};
 var __KEYLANI_SETTINGS__ = {
   loudClass: 'keylani-loud',
@@ -198,6 +192,10 @@ var __KEYLANI_SETTINGS__ = {
   stateTimeout: 1500,
   hasRun: false,
   maxKeyLength: 0
+};
+module.exports = {
+  __KEYLANI_BINDINGS__: __KEYLANI_BINDINGS__,
+  __KEYLANI_SETTINGS__: __KEYLANI_SETTINGS__
 };
 
 /***/ }),
@@ -212,8 +210,7 @@ var __KEYLANI_SETTINGS__ = {
 var Globals = __webpack_require__(/*! ./keylani.globals */ "./src/keylani.globals.js");
 
 var _require = __webpack_require__(/*! ./keylani.loud */ "./src/keylani.loud.js"),
-    __loudText = _require.__loudText; // helpers *********************************************************
-
+    __loudText = _require.__loudText;
 
 function __readKeys(opts, state) {
   return function (event) {
@@ -360,8 +357,7 @@ var _require = __webpack_require__(/*! ./keylani.helpers */ "./src/keylani.helpe
     __readKeys = _require.__readKeys,
     __addToBindings = _require.__addToBindings;
 
-var DOMinterface = __webpack_require__(/*! ./keylani.dom */ "./src/keylani.dom.js"); // interface *********************************************************
-
+var DOMinterface = __webpack_require__(/*! ./keylani.dom */ "./src/keylani.dom.js");
 
 function listen(opts) {
   if (!Globals.__KEYLANI_SETTINGS__.hasRun && __isValidateOpts(opts)) {
@@ -428,8 +424,7 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Globals = __webpack_require__(/*! ./keylani.globals */ "./src/keylani.globals.js"); // loud ************************************************************
-
+var Globals = __webpack_require__(/*! ./keylani.globals */ "./src/keylani.globals.js");
 
 function __loudPanel(opts) {
   if (opts.loud) {

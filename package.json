@@ -7,7 +7,8 @@
     "test:setup": "nyc --reporter=html --reporter=text-summary mocha --recursive ./src/spec/**/*.test.js",
     "test": "nodemon --exec 'npm run test:setup'",
     "lint": "eslint .",
-    "compile": "export NODE_ENV=production && npm run lint && npm run test:setup && webpack --progress"
+	"compile": "export NODE_ENV=production && npm run lint && npm run test:setup && webpack --progress",
+	"dev": "webpack --progress"
   },
   "author": "Simao Nziaka",
   "license": "ISC",

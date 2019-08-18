@@ -1,5 +1,3 @@
-// globals **********************************************************
-
 const __KEYLANI_BINDINGS__ = {};
 
 const __KEYLANI_SETTINGS__ = {

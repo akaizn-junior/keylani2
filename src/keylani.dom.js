@@ -2,8 +2,6 @@ const Globals = require('./keylani.globals');
 const {__addToBindings} = require('./keylani.helpers');
 const {__loudPanel} = require('./keylani.loud');
 
-// DOM ************************************************************
-
 function __listenDOM(opts) {
 	const dataKeyBindings = document.querySelectorAll(Globals.__KEYLANI_SETTINGS__.keybindingAttr);
 	for(let i = 0; i < dataKeyBindings.length; i++) {
