@@ -1,6 +1,6 @@
 /*!
  * Keylani
- * (c) 2019 Simao Nziaka <sdnziaka@gmail.com>
+ * (c) 2019 Verdexdesign - An open source Org by Simao Nziaka <sdnziaka@gmail.com>
  * ISC Licensed
  */
 
