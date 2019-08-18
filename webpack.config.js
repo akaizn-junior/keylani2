@@ -19,7 +19,7 @@ module.exports = {
 		filename: DEV ? `${settings.libname}.js` : `${settings.libname}.min.js`,
 		library: process.env.NAME,
 		libraryTarget: settings.libtarget,
-		path: DEV ? path.join(__dirname, settings.outdir) : path.join(__dirname, settings.outdir, settings.libtarget)
+		path: path.join(__dirname, settings.outdir)
 	},
 	plugins: [],
 	module: {}
