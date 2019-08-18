@@ -1,1 +1,9 @@
-{}
+{
+	"integrationFolder": "src/e2e",
+	"env": {
+	  "dev": {
+		"BaseUrl": "http://localhost:5500/demo/",
+		"Msg": "Testing in dev"
+	  }
+	}
+  }

@@ -4,12 +4,13 @@
   "description": "A js key binding library",
   "scripts": {
     "postinstall": "cypress verify",
-    "test:setup": "nyc --reporter=html --reporter=text-summary mocha --recursive ./src/spec/**/*.test.js",
+    "test:setup": "nyc --reporter=html --reporter=text-summary mocha --recursive ./src/test/**/*.test.js",
     "test": "nodemon --exec 'npm run test:setup'",
 	"lint": "eslint .",
 	"build": "webpack --progress",
 	"compile": "export NODE_ENV=production && npm run lint && npm run test:setup && npm run build",
-	"dev": "export NODE_ENV=development && npm run lint && npm run build"
+	"dev": "export NODE_ENV=development && npm run lint && npm run build",
+	"cy": "cypress run --spec src/e2e/*.spec.js"
   },
   "author": "Simao Nziaka",
   "license": "ISC",
