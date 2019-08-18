@@ -1,4 +1,5 @@
 const path = require('path');
+const pkg = require('./package.json');
 // env configuration
 require('dotenv').config();
 // dev mode?
@@ -19,7 +20,7 @@ module.exports = {
 		filename: DEV ? `${settings.libname}.js` : `${settings.libname}.min.js`,
 		library: process.env.NAME,
 		libraryTarget: settings.libtarget,
-		path: path.join(__dirname, settings.outdir)
+		path: path.join(__dirname, settings.outdir, pkg.version)
 	},
 	plugins: [],
 	module: {
