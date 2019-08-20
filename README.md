@@ -68,8 +68,8 @@ A js key bindings library. Pronounced [Kae · lani]
 
 ## Demo
 
-* Play with Keylani on [Glitch](https://maroon-carnation.glitch.me/)
-* Check out the dev version here [https://maroon-carnation.glitch.me/dev.html](https://maroon-carnation.glitch.me/dev.html)
+* Play with Keylani on [Glitch](https://keylanijs.glitch.me/)
+* Check out the dev version here [https://keylanijs.glitch.me/](https://keylanijs.glitch.me/dev.html)
 * Clone the repo on [Github](https://github.com/verdebydesign/keylani.git) and run the demo locally
 
 ## Shout outs
