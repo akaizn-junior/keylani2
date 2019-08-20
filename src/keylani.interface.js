@@ -111,7 +111,7 @@ function map(bindings) {
  * @description Get all added key bindings with data about each bind
  * @returns An object containing all the key bindings added using Keylani
  * @example
- * `{a: {...}, 'b+2': {...}}`
+ * `{ a: { key: 'a', label: '...', pressed: 2 }, 'b+2': { key: 'b+2', label: '...', pressed: 11 } }`
  */
 function getAllBindings() {
 	return Globals.__KEYLANI_BINDINGS__;
