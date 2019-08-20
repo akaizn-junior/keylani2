@@ -11,7 +11,7 @@
     "compile": "export NODE_ENV=production && npm run lint && npm run test:setup && npm run build",
     "dev": "export NODE_ENV=development && npm run lint && npm run build",
     "cy": "cypress run --spec src/e2e/*.spec.js",
-    "e2e": "webpack-dev-server --quiet & npm run cy",
+    "e2e": "http-server & npm run cy",
     "docs": "jsdoc src/keylani.interface.js -c jsdoc/conf.json --verbose && cp logo.png docs"
   },
   "author": "Simao Nziaka",
@@ -46,6 +46,7 @@
     "docdash": "^1.1.1",
     "dotenv": "^8.0.0",
     "eslint": "^6.1.0",
+    "http-server": "^0.11.1",
     "jsdoc": "^3.6.3",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
