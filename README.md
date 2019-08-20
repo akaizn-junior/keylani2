@@ -16,7 +16,7 @@ A js key bindings library. Pronounced [Kae · lani]
   <a href="#top" data-keybind="t" data-keyshow="true">Top</a>
   .
   .
-  <script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani@0.0.1/dist/keylani.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani2/dist/0.0.1/keylani.min.js"></script>
 ```
 
 ```js
