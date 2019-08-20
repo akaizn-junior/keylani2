@@ -1,0 +1,46 @@
+{
+	"tags": {
+		"allowUnknownTags": true,
+		"dictionaries": ["jsdoc"]
+	},
+	"plugins": [
+		"plugins/markdown"
+	],
+	"templates": {
+		"cleverLinks": true,
+		"default": {
+			"outputSourcePath": true,
+			"outputSourceFiles": true,
+			"uncludeDate": false,
+			"useLongnameInNav": false
+		}
+	},
+	"opts": {
+		"destination": "docs",
+		"template": "node_modules/docdash",
+		"encoding": "utf8",
+		"recursive": true,
+		"readme": "./README.md"
+	},
+	"meta": {
+		"title": "Documentation / Keylani",
+		"description": "A js key binding library",
+		"keyword": "js, library, Simao Nziaka, key bindings"
+	},
+	"docdash": {
+		"menu": {
+			"Glitch Demo (minified prod version)": {
+				"href": "https://maroon-carnation.glitch.me/",
+				"target": "_blank",
+				"class":"menu-item",
+                "id":"website_link"
+			},
+			"Glitch Demo (load dev version)": {
+				"href": "https://maroon-carnation.glitch.me/dev.html",
+				"target": "_blank",
+				"class":"menu-item",
+                "id":"website_link"
+			}
+		}
+	}
+}

@@ -4,16 +4,38 @@
   "description": "A js key binding library",
   "scripts": {
     "postinstall": "cypress verify",
-    "test:setup": "nyc --reporter=html --reporter=text-summary mocha --recursive ./src/test/**/*.test.js",
+    "test:setup": "nyc mocha --recursive ./src/test/**/*.test.js",
     "test": "nodemon --exec 'npm run test:setup'",
-	"lint": "eslint .",
-	"build": "webpack --progress",
-	"compile": "export NODE_ENV=production && npm run lint && npm run test:setup && npm run build",
-	"dev": "export NODE_ENV=development && npm run lint && npm run build",
-	"cy": "cypress run --spec src/e2e/*.spec.js"
+    "lint": "eslint .",
+    "build": "webpack --progress",
+    "compile": "export NODE_ENV=production && npm run lint && npm run test:setup && npm run build",
+    "dev": "export NODE_ENV=development && npm run lint && npm run build",
+    "cy": "cypress run --spec src/e2e/*.spec.js",
+    "e2e": "webpack-dev-server --quiet & npm run cy",
+    "docs": "jsdoc src/keylani.interface.js -c jsdoc/conf.json --verbose && cp logo.png docs"
   },
   "author": "Simao Nziaka",
-  "license": "ISC",
+  "license": "MIT",
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 10,
+    "statements": 10,
+    "functions": 10,
+    "branches": 0,
+    "reporter": [
+      "html",
+      "text-summary"
+    ],
+    "exclude": [
+      "**/*.test.js"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "cache": true,
+    "all": false
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
@@ -21,8 +43,10 @@
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "cypress": "^3.4.1",
+    "docdash": "^1.1.1",
     "dotenv": "^8.0.0",
     "eslint": "^6.1.0",
+    "jsdoc": "^3.6.3",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^6.2.0",
