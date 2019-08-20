@@ -59,12 +59,12 @@ A js key bindings library. Pronounced [Kae · lani]
 
 ## Links
 
-[Documentation](https://akaizn-junior.github.io/keylani/)
+[Documentation](https://verdebydesign.github.io/keylani2/)
 
-* [bind](https://akaizn-junior.github.io/keylani/global.html#bind)
-* [map](https://akaizn-junior.github.io/keylani/global.html#map)
-* [getAllBindings](https://akaizn-junior.github.io/keylani/global.html#getAllBindings)
-* [listen](https://akaizn-junior.github.io/keylani/global.html#listen)
+* [bind](https://verdebydesign.github.io/keylani2/global.html#bind)
+* [map](https://verdebydesign.github.io/keylani2/global.html#map)
+* [getAllBindings](https://verdebydesign.github.io/keylani2/global.html#getAllBindings)
+* [listen](https://verdebydesign.github.io/keylani2/global.html#listen)
 
 ## Demo
 
