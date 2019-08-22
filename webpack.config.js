@@ -9,7 +9,8 @@ const settings = {
 	src: 'src/keylani.interface.js',
 	libname: String(process.env.NAME).toLowerCase(),
 	libtarget: 'umd',
-	outdir: DEV ? 'dev' : 'dist'
+	outdir: DEV ? 'dev' : 'dist',
+	versionSuffix: '-alpha'
 };
 
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
 		filename: DEV ? `${settings.libname}.js` : `${settings.libname}.min.js`,
 		library: process.env.NAME,
 		libraryTarget: settings.libtarget,
-		path: path.join(__dirname, settings.outdir, pkg.version)
+		path: path.join(__dirname, settings.outdir, pkg.version + settings.versionSuffix)
 	},
 	plugins: [],
 	module: {
