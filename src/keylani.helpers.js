@@ -20,11 +20,11 @@ function __readKeys(opts, state) {
 			}
 		}, Globals.__KEYLANI_SETTINGS__.stateTimeout);
 
-		if(state.matchCount === 1 && isExistingBind && isExistingBind.when) {
+		if(state.matchCount === 1 && isExistingBind && isExistingBind.isActive) {
 			__cancelEvent(event);
 			__keyMatchDone(pressed, isExistingBind, opts, {code: state.code, keyCode: state.keyCode, pressed: ++isExistingBind.pressed});
 			__resetState(state);
-		} if(Globals.__KEYLANI_BINDINGS__[state.combo] && Globals.__KEYLANI_BINDINGS__[state.combo].when) {
+		} if(Globals.__KEYLANI_BINDINGS__[state.combo] && Globals.__KEYLANI_BINDINGS__[state.combo].isActive) {
 			__cancelEvent(event);
 			let pressedCount = ++Globals.__KEYLANI_BINDINGS__[state.combo].pressed;
 			__keyMatchDone(state.combo, Globals.__KEYLANI_BINDINGS__[state.combo], opts, {code: state.code, keyCode: state.keyCode, pressed: pressedCount});
@@ -61,7 +61,7 @@ function __addToBindings(key, binding, label, when) {
 	let keyLength = key.split('+').length;
 	let pressed = 0;
 	Globals.__KEYLANI_SETTINGS__.maxKeyLength = keyLength > Globals.__KEYLANI_SETTINGS__.maxKeyLength ? keyLength : Globals.__KEYLANI_SETTINGS__.maxKeyLength;
-	newBinding[key] = { key, binding, label, when, pressed };
+	newBinding[key] = { key, binding, label, isActive: when, pressed };
 	Globals.__KEYLANI_BINDINGS__[key] = newBinding[key];
 }
 
@@ -102,7 +102,11 @@ function __keyMatchDone(key, actualBind, opts, eventProps) {
 	eventProps.label = label;
 	eventProps.showLoudData = opts.showLoudData;
 	__loudText(eventProps, opts.loudTimer);
-	typeof binding === 'function' && binding(result);
+	if(typeof binding === 'function') {
+		setTimeout(() => {
+			binding(result);
+		}, 500);
+	}
 }
 
 module.exports = { __readKeys, __isValidateOpts, __addToBindings };

@@ -34,7 +34,7 @@ describe('Testing Keylani Interface', () => {
 				binding: cb,
 				label: '',
 				pressed: 0,
-				when: true
+				isActive: true
 			}
 		};
 
@@ -62,7 +62,7 @@ describe('Testing Keylani Interface', () => {
 				binding: cb,
 				label,
 				pressed: 0,
-				when: true
+				isActive: true
 			}
 		};
 
@@ -178,14 +178,14 @@ describe('Testing Keylani Interface', () => {
 				binding: cb,
 				label: 'key a',
 				pressed: 0,
-				when: false
+				isActive: false
 			},
 			[keyB]: {
 				key: keyB,
 				binding: cb,
 				label: 'key b',
 				pressed: 0,
-				when: true
+				isActive: true
 			}
 		};
 

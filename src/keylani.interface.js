@@ -117,4 +117,10 @@ function getAllBindings() {
 	return Globals.__KEYLANI_BINDINGS__;
 }
 
-module.exports = { listen, bind, map, getAllBindings };
+const Keylani = { listen, bind, map, getAllBindings };
+Object.defineProperty(Keylani, 'listen', {writable: false, enumerable: false, configurable: false});
+Object.defineProperty(Keylani, 'bind', {writable: false, enumerable: false, configurable: false});
+Object.defineProperty(Keylani, 'map', {writable: false, enumerable: false, configurable: false});
+Object.defineProperty(Keylani, 'getAllBindings', {writable: false, enumerable: false, configurable: false});
+
+module.exports = Keylani;

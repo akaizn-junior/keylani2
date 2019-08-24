@@ -230,7 +230,7 @@ function __readKeys(opts, state) {
       }
     }, Globals.__KEYLANI_SETTINGS__.stateTimeout);
 
-    if (state.matchCount === 1 && isExistingBind && isExistingBind.when) {
+    if (state.matchCount === 1 && isExistingBind && isExistingBind.isActive) {
       __cancelEvent(event);
 
       __keyMatchDone(pressed, isExistingBind, opts, {
@@ -242,7 +242,7 @@ function __readKeys(opts, state) {
       __resetState(state);
     }
 
-    if (Globals.__KEYLANI_BINDINGS__[state.combo] && Globals.__KEYLANI_BINDINGS__[state.combo].when) {
+    if (Globals.__KEYLANI_BINDINGS__[state.combo] && Globals.__KEYLANI_BINDINGS__[state.combo].isActive) {
       __cancelEvent(event);
 
       var pressedCount = ++Globals.__KEYLANI_BINDINGS__[state.combo].pressed;
@@ -278,7 +278,7 @@ function __addToBindings(key, binding, label, when) {
     key: key,
     binding: binding,
     label: label,
-    when: when,
+    isActive: when,
     pressed: pressed
   };
   Globals.__KEYLANI_BINDINGS__[key] = newBinding[key];
@@ -327,7 +327,11 @@ function __keyMatchDone(key, actualBind, opts, eventProps) {
 
   __loudText(eventProps, opts.loudTimer);
 
-  typeof binding === 'function' && binding(result);
+  if (typeof binding === 'function') {
+    setTimeout(function () {
+      binding(result);
+    }, 500);
+  }
 }
 
 module.exports = {
@@ -480,12 +484,33 @@ function getAllBindings() {
   return Globals.__KEYLANI_BINDINGS__;
 }
 
-module.exports = {
+var Keylani = {
   listen: listen,
   bind: bind,
   map: map,
   getAllBindings: getAllBindings
 };
+Object.defineProperty(Keylani, 'listen', {
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+Object.defineProperty(Keylani, 'bind', {
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+Object.defineProperty(Keylani, 'map', {
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+Object.defineProperty(Keylani, 'getAllBindings', {
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+module.exports = Keylani;
 
 /***/ }),
 
