@@ -23,3 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - updated docs with more details
+
+## 0.0.2-alpha
+
+### Added
+
+- 'isActive' key on the list of bindings instead of 'when'
+
+### Removed
+
+- 'when' key from the list of key bindings
