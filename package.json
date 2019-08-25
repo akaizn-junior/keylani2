@@ -1,6 +1,6 @@
 {
   "name": "keylani",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A js key binding library",
   "scripts": {
     "postinstall": "cypress verify",
