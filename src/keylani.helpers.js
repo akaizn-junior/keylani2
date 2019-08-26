@@ -150,4 +150,12 @@ function __verifyKeyNames(key) {
 	}
 }
 
-module.exports = { __readKeys, __isValidateOpts, __addToBindings };
+function __readOnlyKeys(obj) {
+	for(let key in obj) {
+		if(key) {
+			Object.defineProperty(obj, key, {writable: false, enumerable: false, configurable: false});
+		}
+	}
+}
+
+module.exports = { __readKeys, __isValidateOpts, __addToBindings, __readOnlyKeys };

@@ -362,10 +362,23 @@ function __verifyKeyNames(key) {
   }
 }
 
+function __readOnlyKeys(obj) {
+  for (var key in obj) {
+    if (key) {
+      Object.defineProperty(obj, key, {
+        writable: false,
+        enumerable: false,
+        configurable: false
+      });
+    }
+  }
+}
+
 module.exports = {
   __readKeys: __readKeys,
   __isValidateOpts: __isValidateOpts,
-  __addToBindings: __addToBindings
+  __addToBindings: __addToBindings,
+  __readOnlyKeys: __readOnlyKeys
 };
 
 /***/ }),
@@ -387,7 +400,8 @@ var Globals = __webpack_require__(/*! ./keylani.globals */ "./src/keylani.global
 var _require = __webpack_require__(/*! ./keylani.helpers */ "./src/keylani.helpers.js"),
     __isValidateOpts = _require.__isValidateOpts,
     __readKeys = _require.__readKeys,
-    __addToBindings = _require.__addToBindings;
+    __addToBindings = _require.__addToBindings,
+    __readOnlyKeys = _require.__readOnlyKeys;
 
 var DOMinterface = __webpack_require__(/*! ./keylani.dom */ "./src/keylani.dom.js");
 /**
@@ -518,26 +532,9 @@ var Keylani = {
   map: map,
   getAllBindings: getAllBindings
 };
-Object.defineProperty(Keylani, 'listen', {
-  writable: false,
-  enumerable: false,
-  configurable: false
-});
-Object.defineProperty(Keylani, 'bind', {
-  writable: false,
-  enumerable: false,
-  configurable: false
-});
-Object.defineProperty(Keylani, 'map', {
-  writable: false,
-  enumerable: false,
-  configurable: false
-});
-Object.defineProperty(Keylani, 'getAllBindings', {
-  writable: false,
-  enumerable: false,
-  configurable: false
-});
+
+__readOnlyKeys(Keylani);
+
 module.exports = Keylani;
 
 /***/ }),

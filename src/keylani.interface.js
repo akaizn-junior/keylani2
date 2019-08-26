@@ -5,7 +5,7 @@
  */
 
 const Globals = require('./keylani.globals');
-const {__isValidateOpts, __readKeys, __addToBindings} = require('./keylani.helpers');
+const {__isValidateOpts, __readKeys, __addToBindings, __readOnlyKeys} = require('./keylani.helpers');
 const DOMinterface = require('./keylani.dom');
 
 /**
@@ -118,9 +118,6 @@ function getAllBindings() {
 }
 
 const Keylani = { listen, bind, map, getAllBindings };
-Object.defineProperty(Keylani, 'listen', {writable: false, enumerable: false, configurable: false});
-Object.defineProperty(Keylani, 'bind', {writable: false, enumerable: false, configurable: false});
-Object.defineProperty(Keylani, 'map', {writable: false, enumerable: false, configurable: false});
-Object.defineProperty(Keylani, 'getAllBindings', {writable: false, enumerable: false, configurable: false});
+__readOnlyKeys(Keylani);
 
 module.exports = Keylani;
