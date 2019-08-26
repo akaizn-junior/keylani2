@@ -8,8 +8,8 @@
     "test": "nodemon --exec 'npm run test:setup'",
     "lint": "eslint .",
     "build": "webpack --progress",
-    "compile": "export NODE_ENV=production && npm run lint && npm run test:setup && npm run build",
-    "dev": "export NODE_ENV=development && npm run lint && npm run build",
+    "compile": "export NODE_ENV=production && npm run lint && npm run test:setup && npm run docs && npm run build",
+    "dev": "export NODE_ENV=development && npm run lint && webpack --watch --progress",
     "cy": "http-server & cypress run --spec src/e2e/*.spec.js",
     "docs": "jsdoc src/keylani.interface.js -c jsdoc/conf.json --verbose && cp logo.png docs"
   },

@@ -29,6 +29,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - 'isActive' key on the list of bindings instead of 'when'
+- key verification, so that 'ctrl' or 'capslock' in a key bindings is transformed to 'Control' or 'CapsLock' respectively
+
+## 0.0.3-alpha
+
+### Added
+
+- support to build the library with different features; Keylani could built without the DOM dataset interface
 
 ### Removed
 

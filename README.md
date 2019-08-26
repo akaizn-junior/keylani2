@@ -78,6 +78,20 @@ A js key bindings library. Pronounced [Kae · lani]
 
 [Vectr](https://vectr.com/) for being an amazing editor
 
+## Semver
+
+This project uses [semver](https://semver.org/) for versioning.
+
+* Major version updates, remove deprecated code/features (Introduce Breaking changes)
+
+* Minor version updates, introduce new features and deprecates features (Backwards compatible)
+
+* Patch version updates, fixes a bug or clean up code (Does not affect the main API)
+
+* In addition to semver, Keylani concatenates '-alpha' or '-beta' in the version number to indicate the stage of the version
+
+* Finally each released version will have a codename, provided by [makever](https://www.npmjs.com/package/makever). See 'version.json' for the most current version details.
+
 ## Author
 
 &copy; 2019 [Simao Nziaka](https://simaonziaka.com)

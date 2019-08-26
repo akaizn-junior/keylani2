@@ -75,7 +75,7 @@
 		</div>
 		<div class="box combos">
 			<span class="keybind" data-keybind="x+y:callA" data-keylabel="Combo 'x+y' bound from the DOM">x + y</span>
-			<span class="keybind" data-keybind="Control+p:callA" data-keylabel="Combo 'Ctrl+p' bound from the DOM">Ctrl + p</span>
+			<span class="keybind" data-keybind="ctrl+p:callA" data-keylabel="Combo 'Ctrl+p' bound from the DOM">Ctrl + p</span>
 		</div>
 		<div class="box">
 			<textarea rows="5" cols="60" data-gramm="false"></textarea>
@@ -87,9 +87,9 @@
     <footer>
 		<span>&copy; 2019 Simao<i>Nziaka</i></span>
     </footer>
-	<script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani2/dist/0.0.2-alpha/keylani.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani2/dist/0.0.2-alpha/keylani.min.js"></script> -->
 	<!-- <script src="../dist/0.0.2-alpha/keylani.min.js"></script> -->
-	<!-- <script src="../dev/0.0.2-alpha/keylani.js"></script> -->
+	<script src="../dev/0.0.2-alpha/keylani.js"></script>
 	<script>
 
 		Keylani.bind('1+2', callA, 'Combo "1+2" bound from Keylani.bind', true);
@@ -108,14 +108,14 @@
 				label: 'Combo "r+3" bound from Keylani.map',
 				when: true
 			},
-			'Tab': {
+			'tab': {
 				bind: callA,
 				label: 'Cmd "Tab" bound from Keylani.map',
 				when: true
 			},
-			'CapsLock': {
+			'capslock': {
 				bind: callA,
-				label: 'Cmd "CapsLOck" bound from Keylani.map. (CapsLock is On!)',
+				label: 'Cmd "CapsLock" bound from Keylani.map. (CapsLock is On!)',
 				when: true
 			}
 		});

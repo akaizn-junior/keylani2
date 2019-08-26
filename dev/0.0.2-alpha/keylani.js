@@ -271,17 +271,22 @@ function __isValidateOpts(opts) {
 function __addToBindings(key, binding, label, when) {
   var newBinding = {};
   key = key.replace(/\s/g, '');
-  var keyLength = key.split('+').length;
-  var pressed = 0;
-  Globals.__KEYLANI_SETTINGS__.maxKeyLength = keyLength > Globals.__KEYLANI_SETTINGS__.maxKeyLength ? keyLength : Globals.__KEYLANI_SETTINGS__.maxKeyLength;
+  key = __verifyKeyNames(key); // console.log(key);
+
+  __getMaxLength(key.split('+').length);
+
   newBinding[key] = {
     key: key,
     binding: binding,
     label: label,
     isActive: when,
-    pressed: pressed
+    pressed: 0
   };
   Globals.__KEYLANI_BINDINGS__[key] = newBinding[key];
+}
+
+function __getMaxLength(keyLength) {
+  Globals.__KEYLANI_SETTINGS__.maxKeyLength = keyLength > Globals.__KEYLANI_SETTINGS__.maxKeyLength ? keyLength : Globals.__KEYLANI_SETTINGS__.maxKeyLength;
 }
 
 function __cancelEvent(ev) {
@@ -331,6 +336,29 @@ function __keyMatchDone(key, actualBind, opts, eventProps) {
     setTimeout(function () {
       binding(result);
     }, 500);
+  }
+}
+
+function __verifyKeyNames(key) {
+  var keys = {
+    control: 'Control',
+    ctrl: 'Control',
+    alt: 'Alt',
+    shift: 'Shift',
+    esc: 'Esc',
+    enter: 'Enter',
+    tab: 'Tab',
+    capslock: 'CapsLock'
+  };
+  var combo = key.split('+');
+  var actualKey = keys[key.toLowerCase()];
+
+  if (combo.length === 1) {
+    return actualKey ? actualKey : key;
+  } else {
+    return combo.map(function (k) {
+      return keys[k.toLowerCase()] ? keys[k.toLowerCase()] : k;
+    }).join('+');
   }
 }
 
