@@ -401,9 +401,11 @@ var _require = __webpack_require__(/*! ./keylani.helpers */ "./src/keylani.helpe
     __isValidateOpts = _require.__isValidateOpts,
     __readKeys = _require.__readKeys,
     __addToBindings = _require.__addToBindings,
-    __readOnlyKeys = _require.__readOnlyKeys;
+    __readOnlyKeys = _require.__readOnlyKeys; // dom-build
 
-var DOMinterface = __webpack_require__(/*! ./keylani.dom */ "./src/keylani.dom.js");
+
+var DOMinterface = __webpack_require__(/*! ./keylani.dom */ "./src/keylani.dom.js"); // end-dom-build
+
 /**
  * @description Listen for all key presses for the key bindings added using Keylani
  * @param {object} opts Options passed to Keylani

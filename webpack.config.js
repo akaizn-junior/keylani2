@@ -1,5 +1,6 @@
 const path = require('path');
 const pkg = require('./package.json');
+const StripCode = require('./stripcode');
 // env configuration
 require('dotenv').config();
 // dev mode?
@@ -23,7 +24,9 @@ module.exports = {
 		libraryTarget: settings.libtarget,
 		path: path.join(__dirname, settings.outdir, pkg.version + settings.versionSuffix)
 	},
-	plugins: [],
+	plugins: [
+		new StripCode('src/keylani.*.js', /dom-build/)
+	],
 	module: {
 		rules: [
 			{

@@ -6,7 +6,9 @@
 
 const Globals = require('./keylani.globals');
 const {__isValidateOpts, __readKeys, __addToBindings, __readOnlyKeys} = require('./keylani.helpers');
+// dom-build
 const DOMinterface = require('./keylani.dom');
+// end-dom-build
 
 /**
  * @description Listen for all key presses for the key bindings added using Keylani
