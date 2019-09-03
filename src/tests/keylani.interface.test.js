@@ -1,6 +1,6 @@
-const {describe, it, beforeEach} = require('mocha');
-const {expect} = require('chai');
-const {spy} = require('sinon');
+const { describe, it, beforeEach } = require('mocha');
+const { expect } = require('chai');
+const { spy } = require('sinon');
 const fakeDOM = require('jsdom-global');
 // lib
 const {bind, map, getAllBindings, listen} = require('../keylani.interface');
@@ -230,7 +230,6 @@ describe('Testing Keylani Interface', () => {
 
 	it('should test listen with all options', () => {
 		spy(window, 'addEventListener');
-		spy(JSON, 'parse');
 		spy(DOMinterface, '__addLoudPanel');
 		spy(DOMinterface, '__listenDOM');
 
@@ -246,11 +245,8 @@ describe('Testing Keylani Interface', () => {
 		listenSpy(opts);
 		expect(Globals.__KEYLANI_SETTINGS__.hasRun).to.be.true;
 		expect(window.addEventListener.calledOnce).to.be.true;
-		expect(JSON.parse.calledOnce).to.be.true;
 		expect(DOMinterface.__addLoudPanel.calledOnce).to.be.true;
 		expect(DOMinterface.__listenDOM.calledOnce).to.be.true;
-
-		JSON.parse.restore();
 	});
 
 	it('should clean up the fake DOM', () => {

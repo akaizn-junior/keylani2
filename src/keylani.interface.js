@@ -4,11 +4,11 @@
  * @license MIT
  */
 
+/* global MINIMAL_BUILD, DEV */
+
 const Globals = require('./keylani.globals');
 const {__isValidateOpts, __readKeys, __addToBindings, __readOnlyKeys} = require('./keylani.helpers');
-// dom-build
-const DOMinterface = require('./keylani.dom');
-// end-dom-build
+const DOMinterface = !MINIMAL_BUILD && require('./keylani.dom');
 
 /**
  * @description Listen for all key presses for the key bindings added using Keylani
@@ -21,7 +21,7 @@ const DOMinterface = require('./keylani.dom');
  * @example
  * // javascript
  *
- * // Below are the required option values
+ * // Below are the required option values for Keylani's Grande build
  * Keylani.listen({
  *   // 'style' ecan be an object with CSS or a string of a classname
  *   style: { color: 'pink', fontSize: '13px' } or 'key-class',
@@ -29,15 +29,33 @@ const DOMinterface = require('./keylani.dom');
  *   keyshow: true // show keys by DOM added binds by default
  * });
  *
+ * // listen witll all possible 'options' for Keylani's Grande build
+ * Keylani.listen({
+ *	 // 'style' ecan be an object with CSS or a string of a classname
+ *	 style: { color: 'pink', fontSize: '13px' } or 'key-class',
+ *	 loud: true, // show the loud panel
+ *	 keyshow: true, // show keys by DOM added binds by default
+ *	 loudTimer: 3500, // how long does the loud panel stays on screen
+ *	 showLoudData: true // shows data from the key press
+ * });
+ *
+ * // Nano build 'listen' does not read 'options'
+ * Keylani.listen();
+ *
+ * // The multiple Keylani.listen calls here are for example only.
+ * // Keylani.listen only runs once. The calls do not overwrite each other.
+ *
  * // Global keybind functions on the 'window' object
  * function callThisOne() {...}
  * function callThisTwo() {...}
  */
 function listen(opts) {
 	if(!Globals.__KEYLANI_SETTINGS__.hasRun && __isValidateOpts(opts)) {
-		let parsedOpts = JSON.parse(JSON.stringify(opts));
-		DOMinterface.__addLoudPanel(parsedOpts);
-		DOMinterface.__listenDOM(parsedOpts);
+		if(!MINIMAL_BUILD) {
+			DOMinterface.__addLoudPanel(opts);
+			DOMinterface.__listenDOM(opts);
+		}
+
 		const state = {
 			matchCount: 0,
 			combo: '',
@@ -45,9 +63,31 @@ function listen(opts) {
 			keycodes: ''
 		};
 
-		window.addEventListener('keydown', __readKeys(parsedOpts, state));
+		window.addEventListener('keydown', __readKeys(opts, state));
 		// run only once
 		Globals.__KEYLANI_SETTINGS__.hasRun = true;
+	} else if(DEV) {
+		console.error(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.mainDevColors,
+			'Invalid options object.'
+		);
+		console.info(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.sndDevColors,
+			`'listen' options param should be an object with the following fields:
+		{
+			style: string|object, // required
+			loud: boolean, // required
+			keyshow: boolean, // required
+			loudTimer: number, // optional
+			showLoudData: boolean, // optional
+		}`);
+		console.info(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.sndDevColors,
+			'See docs for more: https://verdebydesign.github.io/keylani2/global.html#listen'
+		);
 	}
 }
 
@@ -72,8 +112,25 @@ function bind(key, binding, label = '', when = true) {
 	if(typeof key === 'string' && typeof binding === 'function' && typeof label === 'string' && typeof when === 'boolean') {
 		__addToBindings(key, binding, label, when);
 		return 1;
+	} else if(DEV) {
+		console.error(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.mainDevColors,
+			'\'bind\' must have the following params of the following types: '
+		);
+		console.info(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.sndDevColors,
+			'`Keylani.bind(key: string, binding: function, label: string, when: boolean)`'
+		);
+		console.info(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.sndDevColors,
+			'See docs for more: https://verdebydesign.github.io/keylani2/global.html#bind'
+		);
+
+		return 0;
 	}
-	return 0;
 }
 
 /**
@@ -106,6 +163,28 @@ function map(bindings) {
 				bind(binding, bindings[binding].bind, bindings[binding].label, bindings[binding].when);
 			}
 		}
+	} else if(DEV) {
+		console.error(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.mainDevColors,
+			'Invalid bindings object.'
+		);
+		console.info(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.sndDevColors,
+			`'map' bindings param should be an object of the following model:
+		{
+			[key]: string: {
+				bind: function,
+				label: string,
+				when: boolean
+			}
+		}`);
+		console.info(
+			Globals.__KEYLANI_SETTINGS__.brand,
+			Globals.__KEYLANI_SETTINGS__.sndDevColors,
+			'See docs for more: https://verdebydesign.github.io/keylani2/global.html#map'
+		);
 	}
 }
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+	<title>Mocha Browser Test</title>
+</head>
+<body>
+	<!-- Render the test interface here -->
+	<div id="mocha"></div>
+	<!-- Import Mocha and Chai -->
+	<script src="../node_modules/chai/chai.js"></script>
+	<script src="../node_modules/mocha/mocha.js"></script>
+	<script src="../node_modules/sinon/pkg/sinon.js"></script>
+	<!-- Mocha Init -->
+	<script class="mocha-init">
+		mocha.setup({
+			globals: ['addEventListener'],
+			ui: 'bdd'
+		});
+		mocha.checkLeaks();
+	</script>
+	<!-- Keylani Globals -->
+	<script>
+		const MINIMAL_BUILD = false;
+		const DEV = true;
+		const Globals = {
+			__KEYLANI_SETTINGS__: {
+				keybindingAttr: '[data-keybind]',
+				stateTimeout: 1500,
+				hasRun: false,
+				maxKeyLength: 0,
+				loudClass: 'keylani-loud',
+				loudDataClass: 'keylani-loud-data',
+				loudCharClass: 'keylani-loud-char',
+				paintClass: 'keylani-binding',
+				defaultLoudTimer: 700
+			}
+		};
+	</script>
+	<!-- Mock Keylani DOM Interface -->
+	<script>
+		const DOMinterface = {
+			__addLoudPanel() {},
+			__listenDOM() {}
+		};
+	</script>
+	<!-- Keylani Dev Version -->
+	<script src="../dev/0.0.3-alpha/grande/keylani.js"></script>
+	<!-- Tests -->
+	<script src="../src/tests/keylani.browser-ui-test.js"></script>
+	<!-- Execute Tests -->
+	<script class="mocha-exec">
+		mocha.run();
+	</script>
+</body>
+</html>

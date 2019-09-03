@@ -11,7 +11,7 @@
 		"default": {
 			"outputSourcePath": true,
 			"outputSourceFiles": true,
-			"uncludeDate": false,
+			"includeDate": false,
 			"useLongnameInNav": false
 		}
 	},
@@ -30,16 +30,16 @@
 	"docdash": {
 		"menu": {
 			"Glitch Demo (minified prod version)": {
-				"href": "https://maroon-carnation.glitch.me/",
+				"href": "https://keylanijs.glitch.me/",
 				"target": "_blank",
 				"class":"menu-item",
-                "id":"website_link"
+                "id":"demo_prod"
 			},
 			"Glitch Demo (load dev version)": {
-				"href": "https://maroon-carnation.glitch.me/dev.html",
+				"href": "https://keylanijs.glitch.me/dev.html",
 				"target": "_blank",
 				"class":"menu-item",
-                "id":"website_link"
+                "id":"demo_dev"
 			}
 		}
 	}

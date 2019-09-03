@@ -1,5 +1,7 @@
+/*global MINIMAL_BUILD */
+
 const Globals = require('./keylani.globals');
-const {__loudText} = require('./keylani.loud');
+const __loudText = !MINIMAL_BUILD && require('./keylani.loud').__loudText;
 
 function __readKeys(opts, state) {
 	return event => {
@@ -48,30 +50,31 @@ function __readKeys(opts, state) {
 }
 
 function __isValidateOpts(opts) {
-	let requiredSettings = (
-		Object.prototype.toString.call(opts).includes('Object')
-		&& 'loud' in opts
-		&& 'style' in opts
-		&& 'keyshow' in opts
-	);
+	if(!MINIMAL_BUILD) {
+		let requiredSettings = (
+			Object.prototype.toString.call(opts).includes('Object')
+			&& 'loud' in opts
+			&& 'style' in opts
+			&& 'keyshow' in opts
+		);
 
-	// optional settings
-	// loudTimer - A timer to hide the loud panel
-	// showLoudData - toggles showing extra data for the key press
+		// optional settings
+		// loudTimer - A timer to hide the loud panel - number
+		// showLoudData - toggles showing extra data for the key press - boolean
 
-	return (
-		requiredSettings
-		&& (typeof opts.style === 'string' || Object.prototype.toString.call(opts).includes('Object'))
-		&& typeof opts.loud === 'boolean'
-		&& typeof opts.keyshow === 'boolean'
-	);
+		return (
+			requiredSettings
+			&& (typeof opts.style === 'string' || Object.prototype.toString.call(opts.style).includes('Object'))
+			&& typeof opts.loud === 'boolean'
+			&& typeof opts.keyshow === 'boolean'
+		);
+	}
 }
 
 function __addToBindings(key, binding, label, when) {
 	let newBinding = {};
 	key = key.replace(/\s/g, '');
 	key = __verifyKeyNames(key);
-	// console.log(key);
 	__getMaxLength(key.split('+').length);
 	newBinding[key] = { key, binding, label, isActive: when, pressed: 0 };
 	Globals.__KEYLANI_BINDINGS__[key] = newBinding[key];
@@ -116,11 +119,20 @@ function __isSpecialCase(key, list) {
 function __keyMatchDone(key, actualBind, opts, eventProps) {
 	let binding = actualBind.binding;
 	let label = actualBind.label;
-	let result = {key, label, code: eventProps.code, keyCode: eventProps.keyCode, pressed: eventProps.pressed};
-	eventProps.key = key;
-	eventProps.label = label;
-	eventProps.showLoudData = opts.showLoudData;
-	__loudText(eventProps, opts.loudTimer);
+	let result = {
+		key, label,
+		code: eventProps.code,
+		keyCode: eventProps.keyCode,
+		pressed: eventProps.pressed
+	};
+
+	if(!MINIMAL_BUILD) {
+		eventProps.key = key;
+		eventProps.label = label;
+		eventProps.showLoudData = opts.showLoudData;
+		__loudText(eventProps, opts.loudTimer);
+	}
+
 	if(typeof binding === 'function') {
 		setTimeout(() => {
 			binding(result);
@@ -153,7 +165,11 @@ function __verifyKeyNames(key) {
 function __readOnlyKeys(obj) {
 	for(let key in obj) {
 		if(key) {
-			Object.defineProperty(obj, key, {writable: false, enumerable: false, configurable: false});
+			Object.defineProperty(obj, key, {
+				writable: false,
+				enumerable: false,
+				configurable: false
+			});
 		}
 	}
 }

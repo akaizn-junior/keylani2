@@ -16,7 +16,8 @@ A js key bindings library. Pronounced [Kae · lani]
   <a href="#top" data-keybind="t" data-keyshow="true">Top</a>
   .
   .
-  <script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani2/dist/0.0.1/keylani.min.js"></script>
+  <!-- View the correct version to use. Keylani uses SemVer for its versions. Versions might have a '-' (alpha|beta) when they are on testing stages -->
+  <script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani2/dist/0.0.3/grande/keylani.min.js"></script>
 ```
 
 ```js
@@ -71,6 +72,13 @@ A js key bindings library. Pronounced [Kae · lani]
 * Play with Keylani on [Glitch](https://keylanijs.glitch.me/)
 * Check out the dev version here [https://keylanijs.glitch.me/](https://keylanijs.glitch.me/dev.html)
 * Clone the repo on [Github](https://github.com/verdebydesign/keylani.git) and run the demo locally
+
+## Builds and versions
+
+* Keylani nano build: supports adding binding with functions only, such as 'bind' and 'map'
+* Keylani grande build: supports nano and adding bindings with html dataset, with 'data-keybind' and 'data-keylabel'
+* Both nano and grande build offer dev and prod versions, for testing and production use respectively
+* Access different builds and versions via a cdn or locally by the path: ```.../keylani2/dist/[version]/[build]/[keylani.js|keylani.min.js]```
 
 ## Shout outs
 

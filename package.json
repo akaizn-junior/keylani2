@@ -4,12 +4,13 @@
   "description": "A js key binding library",
   "scripts": {
     "postinstall": "cypress verify",
-    "test:setup": "nyc mocha --recursive ./src/test/**/*.test.js",
+    "test:setup": "export NODE_ENV=test; nyc mocha --recursive ./src/tests/**/*.test.js",
     "test": "nodemon --exec 'npm run test:setup'",
     "lint": "eslint .",
-    "build": "webpack --progress",
+	"build": "webpack --progress",
+	"start": "http-server -p 7555 -o -s",
     "compile": "export NODE_ENV=production && npm run lint && npm run test:setup && npm run docs && npm run build",
-    "dev": "export NODE_ENV=development && npm run lint && webpack --watch --progress",
+    "dev": "export NODE_ENV=development && npm run lint && npm run start & npm run build -- --watch",
     "cy": "http-server & cypress run --spec src/e2e/*.spec.js",
     "docs": "jsdoc src/keylani.interface.js -c jsdoc/conf.json --verbose && cp logo.png docs"
   },
