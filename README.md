@@ -71,7 +71,12 @@ A js key bindings library. Pronounced [Kae · lani]
 
 * Play with Keylani on [Glitch](https://keylanijs.glitch.me/)
 * Check out the dev version here [https://keylanijs.glitch.me/](https://keylanijs.glitch.me/dev.html)
+* Check out the Glitch [page](https://glitch.com/~keylanijs)
 * Clone the repo on [Github](https://github.com/verdebydesign/keylani.git) and run the demo locally
+
+## Tests
+
+* Run [unit tests](https://keylanijs.glitch.me/test.html) on Glitch
 
 ## Builds and versions
 
