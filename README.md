@@ -80,8 +80,8 @@ A js key bindings library. Pronounced [Kae · lani]
 
 ## Builds and versions
 
-* Keylani nano build: supports adding binding with functions only, such as 'bind' and 'map'
-* Keylani grande build: supports nano and adding bindings with html dataset, with 'data-keybind' and 'data-keylabel'
+* Keylani nano build: supports adding key bindings with functions only, such as ```bind``` and ```map```
+* Keylani grande build: supports nano and adding bindings with html dataset, with ```data-keybind``` and ```data-keylabel```
 * Both nano and grande builds offer dev and prod versions, for testing and production use respectively
 * Access different builds and versions via a cdn or locally by the path: ```.../keylani2/dist/[version]/[build]/[keylani.js|keylani.min.js]```
 

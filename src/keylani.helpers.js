@@ -140,7 +140,7 @@ function __keyMatchDone(key, actualBind, opts, eventProps) {
 	}
 }
 
-function __verifyKeyNames(key) {
+function __verifyKeyNames(name) {
 	let keys = {
 		control: 'Control',
 		ctrl: 'Control',
@@ -152,14 +152,28 @@ function __verifyKeyNames(key) {
 		capslock: 'CapsLock'
 	};
 
-	let combo = key.split('+');
-	let actualKey = keys[key.toLowerCase()];
+	let combo = name.split('+');
+	let actualKey = keys[name.toLowerCase()];
 
-	if(combo.length === 1) {
-		return actualKey ? actualKey : key;
+	if(name.length > 1 && combo.length === 1 && !actualKey && __isWord(name)) {
+		return __isWord(name);
+	} else if(name.length === 1) {
+		return actualKey ? actualKey : name;
 	} else {
 		return combo.map(k => (keys[k.toLowerCase()] ? keys[k.toLowerCase()] : k)).join('+');
 	}
+}
+
+function __isWord(word) {
+	let digits = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+	for(let i = 0; i < word.length; i++) {
+		if(digits.indexOf(word[i]) === -1) {
+			return false;
+		}
+	}
+
+	return word.split('').join('+');
 }
 
 function __readOnlyKeys(obj) {
@@ -174,4 +188,4 @@ function __readOnlyKeys(obj) {
 	}
 }
 
-module.exports = { __readKeys, __isValidateOpts, __addToBindings, __readOnlyKeys };
+module.exports = { __readKeys, __isValidateOpts, __addToBindings, __readOnlyKeys, __isWord };

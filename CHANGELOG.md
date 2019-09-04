@@ -36,6 +36,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - support to build the library with different features; Keylani could built without the DOM dataset interface
+- nano build: supports adding key bindings with functions only, such as 'bind' and 'map'
+- Grande build: supports nano and adding bindings with html dataset, with 'data-keybind' and 'data-keylabel'
+- 'Word' support, create a key binding from a word such as 'abba' which will convert to the combo 'a+b+b+a'
+- support for key bindings by letter: 'a', combo: 'a+b' and word: 'abba'; For example: Keylani.bind('abba', (done) => ..., 'label')
 
 ### Removed
 

@@ -447,7 +447,7 @@ function __keyMatchDone(key, actualBind, opts, eventProps) {
   }
 }
 
-function __verifyKeyNames(key) {
+function __verifyKeyNames(name) {
   var keys = {
     control: 'Control',
     ctrl: 'Control',
@@ -458,16 +458,30 @@ function __verifyKeyNames(key) {
     tab: 'Tab',
     capslock: 'CapsLock'
   };
-  var combo = key.split('+');
-  var actualKey = keys[key.toLowerCase()];
+  var combo = name.split('+');
+  var actualKey = keys[name.toLowerCase()];
 
-  if (combo.length === 1) {
-    return actualKey ? actualKey : key;
+  if (name.length > 1 && combo.length === 1 && !actualKey && __isWord(name)) {
+    return __isWord(name);
+  } else if (name.length === 1) {
+    return actualKey ? actualKey : name;
   } else {
     return combo.map(function (k) {
       return keys[k.toLowerCase()] ? keys[k.toLowerCase()] : k;
     }).join('+');
   }
+}
+
+function __isWord(word) {
+  var digits = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (var i = 0; i < word.length; i++) {
+    if (digits.indexOf(word[i]) === -1) {
+      return false;
+    }
+  }
+
+  return word.split('').join('+');
 }
 
 function __readOnlyKeys(obj) {
@@ -486,7 +500,8 @@ module.exports = {
   __readKeys: __readKeys,
   __isValidateOpts: __isValidateOpts,
   __addToBindings: __addToBindings,
-  __readOnlyKeys: __readOnlyKeys
+  __readOnlyKeys: __readOnlyKeys,
+  __isWord: __isWord
 };
 
 /***/ }),
@@ -581,7 +596,8 @@ module.exports = {
 var Globals = __webpack_require__(1);
 
 var _require = __webpack_require__(2),
-    __addToBindings = _require.__addToBindings;
+    __addToBindings = _require.__addToBindings,
+    __isWord = _require.__isWord;
 
 var _require2 = __webpack_require__(3),
     __loudPanel = _require2.__loudPanel;
@@ -623,7 +639,7 @@ function __paintHtml(opts, boundEl) {
     var domBind = __readDomBinding(boundEl.dataset.keybind);
 
     if (domBind.length) {
-      keyTag.innerHTML = domBind[0];
+      keyTag.innerHTML = __isWord(domBind[0]) ? __isWord(domBind[0]) : domBind[0];
 
       if (typeof opts.style === 'string') {
         keyTag.className += " ".concat(opts.style);

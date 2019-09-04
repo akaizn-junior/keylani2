@@ -1,5 +1,5 @@
 const Globals = require('./keylani.globals');
-const {__addToBindings} = require('./keylani.helpers');
+const {__addToBindings, __isWord} = require('./keylani.helpers');
 const {__loudPanel} = require('./keylani.loud');
 
 function __listenDOM(opts) {
@@ -38,7 +38,7 @@ function __paintHtml(opts, boundEl) {
 		let domBind = __readDomBinding(boundEl.dataset.keybind);
 
 		if(domBind.length) {
-			keyTag.innerHTML = domBind[0];
+			keyTag.innerHTML = __isWord(domBind[0]) ? __isWord(domBind[0]) : domBind[0];
 
 			if(typeof opts.style === 'string') {
 				keyTag.className += ` ${opts.style}`;
