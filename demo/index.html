@@ -71,5 +71,22 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani2/dist/0.0.3-alpha/grande/keylani.min.js"></script>
+	<script>
+
+		function float(e) {
+			console.log(e);
+			alert(e);
+		};
+
+		Keylani.bind('a', float);
+		Keylani.bind('b', float);
+		Keylani.bind('c', float);
+		Keylani.bind('d', float);
+		Keylani.bind('e', float);
+
+		console.log(Keylani.getAllBindings());
+
+	</script>
 </body>
 </html>

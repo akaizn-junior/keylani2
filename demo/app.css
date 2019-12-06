@@ -1,6 +1,5 @@
 :root {
 	--dark: #171818;
-	--beige: rgb(219, 219, 188);
 	--light: #f1eae1;
 	--yellow: #f7f701;
 	--sand: #f1eae1;
@@ -23,51 +22,23 @@
 	font-family: sans-serif;
 }
 
+body {
+	background-color: var(--yellow);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30%, var(--yellow)), color-stop(59%, var(--blue)));
+	background-image: linear-gradient(180deg, var(--yellow) 20%, var(--blue) 69%);
+}
+
 .wrapper {
 	display: grid;
 	grid-template-rows: 80vh 1fr;
 }
 
-#sky {
-	background-color: var(--yellow);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30%, var(--yellow)), color-stop(59%, var(--blue)));
-	background-image: linear-gradient(180deg, var(--yellow) 30%, var(--blue) 59%);
-}
-
-@-webkit-keyframes bounce {
-	0% {
-		margin-top: 2px;
-	}
-
-	55% {
-		margin-top: 2px;
-	}
-
-	75% {
-		margin-bottom: 15px;
-	}
-
-	95% {
-		margin-bottom: 15px;
-	}
-}
-
-@keyframes bounce {
-	0% {
-		margin-top: 2px;
-	}
-
-	55% {
-		margin-top: 2px;
-	}
-
-	75% {
-		margin-bottom: 15px;
-	}
-
-	95% {
-		margin-bottom: 15px;
-	}
+#seashore {
+	border-top-left-radius: 150px;
+	border-top-right-radius: 200px;
+	border-bottom-right-radius: 200px;
+	width: 90%;
+	background-color: #ffffb9;
 }
 
 .key {
@@ -93,11 +64,9 @@
 
 #row {
 	height: 55px;
-	margin: auto 10%;
+	margin: auto 5%;
 	-webkit-animation-duration: 1s;
 	animation-duration: 1s;
-	-webkit-animation-name: bounce;
-			animation-name: bounce;
 }
 
 #capslock span {
@@ -136,13 +105,13 @@
 	font-size: 40px;
 	left: 60%;
 	top: 10%;
-	width: 45px;
+	width: 40px;
 	padding: 5px;
 }
 
 #ball:hover {
 	-webkit-transform: rotate(360deg);
 	        transform: rotate(360deg);
-	-webkit-transition: linear .8s;
-	transition: linear .8s;
+	-webkit-transition: linear 1s;
+	transition: linear 1s;
 }
