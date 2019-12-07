@@ -1,18 +1,15 @@
-const webpack = require('webpack');
 const path = require('path');
 const pkg = require('./package.json');
 // env configuration
 require('dotenv').config();
 // dev mode?
 const DEV = process.env.NODE_ENV !== 'production';
-const MINIMAL_BUILD = process.env.BUILD === 'nano';
 // configurations
 const settings = {
 	src: 'src/keylani.interface.js',
 	libname: process.env.NAME.toLowerCase(),
 	libtarget: 'umd',
-	outdir: DEV ? 'dev' : 'dist',
-	versionSuffix: process.env.ALPHA ? '-alpha' : process.env.BETA ? '-beta' : ''
+	outdir: DEV ? 'dev' : 'dist'
 };
 // setup config
 const webpackConfig = () => ({
@@ -23,14 +20,8 @@ const webpackConfig = () => ({
 		filename: DEV ? `${settings.libname}.js` : `${settings.libname}.min.js`,
 		library: process.env.NAME,
 		libraryTarget: settings.libtarget,
-		path: path.join(__dirname, settings.outdir, pkg.version + settings.versionSuffix, process.env.BUILD)
+		path: path.join(__dirname, settings.outdir, pkg.version)
 	},
-	plugins: [
-		new webpack.DefinePlugin({
-			MINIMAL_BUILD,
-			DEV
-		})
-	],
 	module: {
 		rules: [
 			{

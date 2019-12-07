@@ -1,9 +1,0 @@
-{
-	"integrationFolder": "src/e2e",
-	"env": {
-	  "dev": {
-		"BaseUrl": "http://127.0.0.1:8080/demo/",
-		"Msg": "Testing in dev"
-	  }
-	}
-}
