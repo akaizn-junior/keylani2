@@ -1,6 +1,6 @@
 :root {
 	--dark: #171818;
-	--light: #f1eae1;
+	--light: aliceblue;
 	--yellow: #f7f701;
 	--sand: #f1eae1;
 	--blue: #52ACFF;
@@ -13,7 +13,7 @@
 
 ::-moz-selection {
 	background-color: var(--dark);
-	color: vaer(--light);
+	color: var(--light);
 }
 
 * {
@@ -24,7 +24,7 @@
 
 body {
 	background-color: var(--yellow);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30%, var(--yellow)), color-stop(59%, var(--blue)));
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, var(--yellow)), color-stop(69%, var(--blue)));
 	background-image: linear-gradient(180deg, var(--yellow) 20%, var(--blue) 69%);
 }
 
@@ -53,11 +53,11 @@ body {
 	font-weight: 500;
 	color: #26292c;
 	cursor: pointer;
+	text-transform: uppercase;
 }
 
 .key:hover {
 	padding: 8px 15px;
-	text-shadow: 6px -4px 2px var(--dark);
 	border: 1px solid rgb(211, 215, 215);
 	color: var(--dark);
 }
@@ -69,8 +69,33 @@ body {
 	animation-duration: 1s;
 }
 
+.float {
+	position: absolute;
+	top: 25%;
+	padding: 10px 15px;
+	-webkit-box-shadow: 0px 4px 0px 8px #9b9a96;
+	        box-shadow: 0px 4px 0px 8px #9b9a96;
+}
+
+.float:hover {
+	padding: 11px 16px;
+}
+
+.float ~ .float {
+	margin: 80px;
+}
+
+.float + .float:nth-child(2n) {
+	margin: 120px;
+	left: 5%;
+}
+
 #capslock span {
 	font-size: 17px;
+}
+
+#capslock {
+	text-transform: lowercase;
 }
 
 #umbrella {
@@ -113,5 +138,33 @@ body {
 	-webkit-transform: rotate(360deg);
 	        transform: rotate(360deg);
 	-webkit-transition: linear 1s;
-	transition: linear 1s;
+			transition: linear 1s;
+}
+
+#eclipse {
+	border: 1px solid var(--yellow);
+	padding: 20px 35px;
+	width: 12em;
+	height: 14em;
+	background-color: #2d2e2f;
+	margin: 70px auto;
+	color: var(--light);
+	border-radius: 150px;
+	box-shadow: inset 5px 0px 10px 10px var(--yellow);
+	font-style: italic;
+}
+
+#eclipse .letter {
+	font-size: 80px;
+	font-weight: bold;
+	padding: 15%;
+}
+
+#eclipse .keydata {
+	padding-left: 45%;
+	font-size: 15px;
+}
+
+#eclipse #capslock .letter {
+	font-size: 10px;
 }

@@ -10,60 +10,64 @@
 <body>
 	<div class="wrapper">
 		<div id="sky">
+			<div id="eclipse" title="Eclipse">
+				<span class="letter"></span>
+				<div class="keydata"></div>
+			</div>
 		</div>
 		<div id="seashore">
 			<div id="row">
-				<span class="key letter">A</span>
-				<span class="key letter">B</span>
-				<span class="key letter">C</span>
-				<span class="key letter">D</span>
-				<span class="key letter">E</span>
-				<span class="key letter">F</span>
-				<span class="key letter">G</span>
-				<span class="key letter">H</span>
-				<span class="key letter">I</span>
-				<span class="key letter">J</span>
-				<span class="key letter">K</span>
-				<span class="key letter">L</span>
-				<span class="key letter">M</span>
-				<span class="key letter">N</span>
-				<span class="key letter">O</span>
-				<span class="key letter">P</span>
-				<span class="key letter">Q</span>
-				<span class="key letter">R</span>
-				<span class="key letter">S</span>
-				<span class="key letter">T</span>
-				<span class="key letter">U</span>
-				<span class="key letter">V</span>
-				<span class="key letter">W</span>
-				<span class="key letter">X</span>
-				<span class="key letter">Y</span>
-				<span class="key letter">Z</span>
+				<span id="a" class="key letter">a</span>
+				<span id="b" class="key letter">b</span>
+				<span id="c" class="key letter">c</span>
+				<span id="d" class="key letter">d</span>
+				<span id="e" class="key letter">e</span>
+				<span id="f" class="key letter">f</span>
+				<span id="g" class="key letter">g</span>
+				<span id="h" class="key letter">h</span>
+				<span id="i" class="key letter">i</span>
+				<span id="j" class="key letter">j</span>
+				<span id="k" class="key letter">k</span>
+				<span id="l" class="key letter">l</span>
+				<span id="m" class="key letter">m</span>
+				<span id="n" class="key letter">n</span>
+				<span id="o" class="key letter">o</span>
+				<span id="p" class="key letter">p</span>
+				<span id="q" class="key letter">q</span>
+				<span id="r" class="key letter">r</span>
+				<span id="s" class="key letter">s</span>
+				<span id="t" class="key letter">t</span>
+				<span id="u" class="key letter">u</span>
+				<span id="v" class="key letter">v</span>
+				<span id="w" class="key letter">w</span>
+				<span id="x" class="key letter">x</span>
+				<span id="y" class="key letter">y</span>
+				<span id="z" class="key letter">z</span>
 			</div>
 			<div id="row">
-				<span class="key cmd" title="ctrl">&#8629;</span>
-				<span class="key cmd" title="tab">tab &#8644;</span>
-				<span class="key cmd" title="esc">esc</span>
-				<span class="key cmd" title="ArrowLeft">&#8592;</span>
-				<span class="key cmd" title="ArrowUp">&#8593;</span>
-				<span class="key cmd" title="ArrowRight">&#8594;</span>
-				<span class="key cmd" title="ArrowDown">&#8595;</span>
-				<span id="capslock" class="key cmd" title="CapsLock">caps lock <span>&#9899;</span></span>
+				<span id="enter" class="key cmd" title="enter">&#8629;</span>
+				<span id="tab" class="key cmd" title="tab">&#8644;</span>
+				<span id="esc" class="key cmd" title="esc">esc</span>
+				<span id="arrowleft" class="key cmd" title="ArrowLeft">&#8592;</span>
+				<span id="arrowup" class="key cmd" title="ArrowUp">&#8593;</span>
+				<span id="arrowright" class="key cmd" title="ArrowRight">&#8594;</span>
+				<span id="arrowdown" class="key cmd" title="ArrowDown">&#8595;</span>
+				<span id="capslock" class="key cmd caps" title="CapsLock">caps lock <span>&#9899;</span></span>
 			</div>
 			<div id="umbrella">
 				<img src="./assets/umbrella100x.png" alt="Umbrella" title="Umbrella">
 			</div>
 			<div id="row">
-				<span class="key number">0</span>
-				<span class="key number">1</span>
-				<span class="key number">2</span>
-				<span class="key number">3</span>
-				<span class="key number">4</span>
-				<span class="key number">5</span>
-				<span class="key number">6</span>
-				<span class="key number">7</span>
-				<span class="key number">8</span>
-				<span class="key number">9</span>
+				<span id="0" class="key number">0</span>
+				<span id="1" class="key number">1</span>
+				<span id="2" class="key number">2</span>
+				<span id="3" class="key number">3</span>
+				<span id="4" class="key number">4</span>
+				<span id="5" class="key number">5</span>
+				<span id="6" class="key number">6</span>
+				<span id="7" class="key number">7</span>
+				<span id="8" class="key number">8</span>
+				<span id="9" class="key number">9</span>
 			</div>
 			<div id="ball" title="Ball">&#9917;</div>
 			<div id="beach-chair">
@@ -73,20 +77,108 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/gh/verdebydesign/keylani2/dist/0.0.3-alpha/grande/keylani.min.js"></script>
 	<script>
+		Keylani.bind('a', highlight);
+		Keylani.bind('b', highlight);
+		Keylani.bind('c', highlight);
+		Keylani.bind('d', highlight);
+		Keylani.bind('e', highlight);
+		Keylani.bind('f', highlight);
+		Keylani.bind('g', highlight);
+		Keylani.bind('h', highlight);
+		Keylani.bind('i', highlight);
+		Keylani.bind('j', highlight);
+		Keylani.bind('k', highlight);
+		Keylani.bind('l', highlight);
+		Keylani.bind('m', highlight);
+		Keylani.bind('n', highlight);
+		Keylani.bind('o', highlight);
+		Keylani.bind('p', highlight);
+		Keylani.bind('q', highlight);
+		Keylani.bind('r', highlight);
+		Keylani.bind('s', highlight);
+		Keylani.bind('t', highlight);
+		Keylani.bind('u', highlight);
+		Keylani.bind('v', highlight);
+		Keylani.bind('w', highlight);
+		Keylani.bind('x', highlight);
+		Keylani.bind('y', highlight);
+		Keylani.bind('z', highlight);
 
-		Keylani.bind('a', float);
-		Keylani.bind('b', float);
-		Keylani.bind('c', float);
-		Keylani.bind('d', float);
-		Keylani.bind('e', float);
+		Keylani.bind('A', highlight);
+		Keylani.bind('B', highlight);
+		Keylani.bind('C', highlight);
+		Keylani.bind('D', highlight);
+		Keylani.bind('E', highlight);
+		Keylani.bind('F', highlight);
+		Keylani.bind('G', highlight);
+		Keylani.bind('H', highlight);
+		Keylani.bind('I', highlight);
+		Keylani.bind('J', highlight);
+		Keylani.bind('K', highlight);
+		Keylani.bind('L', highlight);
+		Keylani.bind('M', highlight);
+		Keylani.bind('N', highlight);
+		Keylani.bind('O', highlight);
+		Keylani.bind('P', highlight);
+		Keylani.bind('Q', highlight);
+		Keylani.bind('R', highlight);
+		Keylani.bind('S', highlight);
+		Keylani.bind('T', highlight);
+		Keylani.bind('U', highlight);
+		Keylani.bind('V', highlight);
+		Keylani.bind('W', highlight);
+		Keylani.bind('X', highlight);
+		Keylani.bind('Y', highlight);
+		Keylani.bind('Z', highlight);
 
-		function float(done) {
+		Keylani.bind('0', highlight);
+		Keylani.bind('1', highlight);
+		Keylani.bind('2', highlight);
+		Keylani.bind('3', highlight);
+		Keylani.bind('4', highlight);
+		Keylani.bind('5', highlight);
+		Keylani.bind('6', highlight);
+		Keylani.bind('7', highlight);
+		Keylani.bind('8', highlight);
+		Keylani.bind('9', highlight);
+
+		Keylani.bind('ctrl', highlight);
+		Keylani.bind('tab', highlight);
+		Keylani.bind('esc', highlight);
+		Keylani.bind('capslock', highlight);
+		Keylani.bind('enter', highlight);
+		Keylani.bind('arrowleft', highlight);
+		Keylani.bind('arrowdown', highlight);
+		Keylani.bind('arrowup', highlight);
+		Keylani.bind('arrowright', highlight);
+
+		const eclipse = document.getElementById('eclipse');
+
+		function highlight(done) {
+
 			console.log(done);
-			alert(done);
+
+			let keyId = done.key.toLowerCase();
+			const keyEl = document.getElementById(keyId);
+
+			if (keyEl) {
+				eclipse.children[1].innerHTML = '';
+				eclipse.children[0].innerHTML = keyEl.innerText;
+				eclipse.children[1].id = keyId;
+				eclipse.children[1].innerText += `Keycode: ${done.keyCode}\n`;
+				eclipse.children[1].innerText += `Code: "${done.code}"\n`;
+				eclipse.children[1].innerText += `Key: "${done.key}"\n`;
+				eclipse.children[1].innerText += `Pressed: ${done.pressed}x`;
+			}
 		};
 
-		console.log(Keylani.getAllBindings());
-
+		Keylani.listen({
+			style: '',
+			loud: false,
+			keyshow: false,
+			showLoudData: false,
+			loudTimer: 15000
+		});
 	</script>
 </body>
 </html>
