@@ -4,6 +4,7 @@
 	--yellow: #f7f701;
 	--sand: #f1eae1;
 	--blue: #52ACFF;
+	--link-blue: #2ac3ff;
 }
 
 ::selection {
@@ -27,6 +28,32 @@ body {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, var(--yellow)), color-stop(69%, var(--blue)));
 	background-image: linear-gradient(180deg, var(--yellow) 20%, var(--blue) 69%);
 }
+
+/* Links */
+
+a[target="_blank"] {
+    color: var(--light);
+    text-decoration: none;
+    background-color: var(--dark);
+}
+
+a[target="_blank"]::after {
+    content: '\279C';
+    color: var(--link-blue);
+}
+
+a:hover,
+a:focus {
+    color: var(--link-blue);
+    text-decoration: underline;
+}
+
+a:active {
+    color: orange;
+    text-decoration: underline;
+}
+
+/* end Links */
 
 .wrapper {
 	display: grid;
@@ -184,7 +211,7 @@ body {
 }
 
 #brand {
-	width: 150px;
+	width: 200px;
 	min-height: 80px;
 	padding: 10px 20px;
 	background-color: var(--blue);
@@ -203,4 +230,6 @@ body {
 
 #brand p {
 	font-size: 14px;
+	margin-top: 10px;
+	padding: 4px;
 }
