@@ -155,16 +155,16 @@
 		const eclipse = document.getElementById('eclipse');
 
 		function highlight(done) {
-
-			console.log(done);
-
 			let keyId = done.key.toLowerCase();
 			const keyEl = document.getElementById(keyId);
 
 			if (keyEl) {
+				// clear
+				eclipse.children[0].innerHTML = '';
 				eclipse.children[1].innerHTML = '';
+				// data
+				eclipse.children[0].id = keyId;
 				eclipse.children[0].innerHTML = keyEl.innerText;
-				eclipse.children[1].id = keyId;
 				eclipse.children[1].innerText += `Keycode: ${done.keyCode}\n`;
 				eclipse.children[1].innerText += `Code: "${done.code}"\n`;
 				eclipse.children[1].innerText += `Key: "${done.key}"\n`;
