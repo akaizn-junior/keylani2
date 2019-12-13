@@ -152,6 +152,7 @@ body {
 	border-radius: 150px;
 	box-shadow: inset 5px 0px 10px 10px var(--yellow);
 	font-style: italic;
+	cursor: pointer;
 }
 
 #eclipse .letter {
