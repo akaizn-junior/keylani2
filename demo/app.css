@@ -198,7 +198,7 @@ a:active {
 	font-size: 35px;
 }
 
-@-webkit-keyframes funBg {
+@-webkit-keyframes blink-bg {
 	0% { background-color: var(--blue); }
 	20% { background-color: rgb(114, 157, 250); }
 	40% { background-color: rgb(24, 125, 240); }
@@ -207,7 +207,7 @@ a:active {
 	100% { background-color: var(--blue); }
 }
 
-@keyframes funBg {
+@keyframes blink-bg {
 	0% { background-color: var(--blue); }
 	20% { background-color: rgb(114, 157, 250); }
 	40% { background-color: rgb(24, 125, 240); }
@@ -222,20 +222,18 @@ a:active {
 	padding: 10px 20px;
 	background-color: var(--blue);
 	color: var(--light);
-	-webkit-animation: funBg 7s ease-out infinite;
-	        animation: funBg 7s ease-out infinite;
-}
-
-#brand * {
-	background-color: black;
+	-webkit-animation: blink-bg 7s ease-out infinite;
+	        animation: blink-bg 7s ease-out infinite;
 }
 
 .logo {
-	font-size: 20px;
+	background-color: black;
+	font-size: 24px;
 }
 
 #brand p {
 	font-size: 14px;
 	margin-top: 10px;
 	padding: 4px;
+	background-color: black;
 }
