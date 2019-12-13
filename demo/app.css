@@ -89,7 +89,7 @@ a:active {
 	color: var(--dark);
 }
 
-#row {
+.row {
 	height: 55px;
 	margin: auto 5%;
 	-webkit-animation-duration: 1s;
