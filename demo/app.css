@@ -150,7 +150,8 @@ body {
 	margin: 70px auto;
 	color: var(--light);
 	border-radius: 150px;
-	box-shadow: inset 5px 0px 10px 10px var(--yellow);
+	-webkit-box-shadow: inset 5px 0px 10px 10px var(--yellow);
+	        box-shadow: inset 5px 0px 10px 10px var(--yellow);
 	font-style: italic;
 	cursor: pointer;
 }
@@ -168,4 +169,38 @@ body {
 
 #eclipse #capslock {
 	font-size: 35px;
+}
+
+@-webkit-keyframes funBg {
+	0% { background-color: rgb(151, 151, 247); }
+	50% { background-color: rgb(128, 128, 240); }
+	100% { background-color: rgb(74, 74, 243); }
+}
+
+@keyframes funBg {
+	0% { background-color: rgb(151, 151, 247); }
+	50% { background-color: rgb(128, 128, 240); }
+	100% { background-color: rgb(74, 74, 243); }
+}
+
+#brand {
+	width: 150px;
+	min-height: 80px;
+	padding: 10px 20px;
+	background-color: var(--blue);
+	color: var(--light);
+	-webkit-animation: funBg 2s ease-out infinite;
+	        animation: funBg 2s ease-out infinite;
+}
+
+#brand * {
+	background-color: black;
+}
+
+.logo {
+	font-size: 20px;
+}
+
+#brand p {
+	font-size: 14px;
 }
